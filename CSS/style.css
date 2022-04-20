@@ -129,8 +129,6 @@ header{
     width: 500px;
     border-radius: 5px;
     margin: 46px 0 5px 0;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 65.62%, rgba(0, 0, 0, 0.8) 100%), url(image.png);
-
 }
 
 .imgQuizzCreatedSucess p {
@@ -142,7 +140,7 @@ header{
 }
 
 
-.quizzQuestions .question, .answerCorrect, .answersIncorrect{
+.quizzQuestions .question, .answerCorrect, .answersIncorrect, .level{
     margin: 10px;
 }
 
