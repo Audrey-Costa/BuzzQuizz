@@ -5,28 +5,35 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BuzzQuizz</title>
-    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="CSS/reset.css">
+    <link rel="stylesheet" href="CSS/style.css">
     <link rel="icon" href="Images/uol.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
     rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet"> 
-    <link rel="stylesheet" href="style.css">
+   
 
 </head>
 <body>
     <div class="container">
-        <div class="header">
+        <header >
             <h1>BuzzQuizz</h1>
-        </div>
+        </header>
+
+     <!-- === HOME ===-->
         <div class="home">
 
         </div>
         <div class="quizzPlay">
     
         </div>
+
+         <!-- === PAG 3 -> QUIZZ CREATE  ===-->
         <div class="quizzCreator">
+
+            <!-- === PAG 3 -> BASIC INFO QUIZZ ===-->
             <div class="quizzTheme">
                 <div class="leading">
                     <p>Começe pelo começo</p>
@@ -39,6 +46,7 @@
                 </div>
                 <button>Prosseguir para Criar Perguntas</button>
             </div>
+            <!-- === PAG 3 -> QUESTION QUIZZ ===-->
             <div class="quizzQuestions">
                 <div class="leading">
                     <p>Crie suas perguntas</p>
@@ -72,12 +80,59 @@
                 </div>
                 <button>Prosseguir para Criar Níveis</button>
             </div>
+             <!-- === PAG 3 -> LEVELS QUIZZ ===-->
+             <div class="quizzLevels">
+                <div class="leading">
+                    <p>Agora, decida os níveis</p>
+                </div>
+                <div class="inputs">
+                    <div class="question">
+                        <p>Nível 1</p>
+                        <input type="text" placeholder="Título do nível">
+                        <input type="number" placeholder="% de acerto míníma">
+                        <input type="url" placeholder="URL da imagem do nível">
+                        <input type="text" placeholder="Descrição do nível">
+                       
+                      
+                    </div>
+                  
+                </div>
+                <button class="addLevelButton"> <p>adicionar nível</p>
+                 <icon><img src="Img/vectorEdit.jpeg" alt=""></icon>
+                 </button>
+                <button>Prosseguir para Criar Níveis</button>
+            </div>
+            
+
+
+
+
+
+
+
+            <!-- === SUCESS QUIZZ CREATED ===-->
+
+            <div class="quizzCreatedSucess">
+                <div class="leading">
+                    <p>Seu quizz está pronto!</p>
+                </div>
+
+                <div class="imgQuizzCreatedSucess">
+                    <img src="Img/narutinSucessCreated.jpg" alt="">
+                    <p>
+                        Aqui vai o  question.inputs.title
+                    </p>
+                </div>
+                <button>Acessar Quizz</button>
+                <button class="buttonBackToHome"> Voltar pra home</button>
+            </div>
+
         </div>
     </div>
 
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="scripts.js"></script>
+    <script src="JS/scripts.js"></script>
 </body>
 </html>

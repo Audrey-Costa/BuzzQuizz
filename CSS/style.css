@@ -26,19 +26,25 @@ p{
 
 }
 
-.container{
+  
+
+.container{padding-top: 70px;
     background-color: #FAFAFA;
 }
 
-.header{
+header{
+    position: absolute;
+    top: 0px;
+    left: 0px;
     width: 100%;
     height: 70px;
     background-color: #EC362D;
     display: flex;
     justify-content: center;
     align-items: center;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
-.quizzTheme, .quizzQuestions{
+.quizzTheme, .quizzQuestions, .quizzLevels, .quizzCreatedSucess{
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -46,12 +52,12 @@ p{
     background: #FAFAFA;
 }
 
-.quizzTheme .leading, .quizzQuestions .leading{
+.quizzTheme .leading, .quizzQuestions .leading, .quizzLevels .leading, .quizzCreatedSucess .leading { 
     height: 23px;
     margin-top: 60px;
 }
 
-.quizzTheme .inputs, .quizzQuestions .inputs{
+.quizzTheme .inputs, .quizzQuestions .inputs, .quizzLevels .inputs, .quizzLevels .addLevelButton{
     width: 600px;
     display: flex;
     flex-direction: column;
@@ -60,10 +66,9 @@ p{
     margin: 27px;
     background: #FFFFFF;
     padding: 10px;
-
 }
 
-.quizzTheme input, .quizzQuestions input{
+.quizzTheme input, .quizzQuestions input, .quizzLevels input{
     width: 564px;
     height: 46px;
     background: #FFFFFF;
@@ -81,9 +86,11 @@ p{
 
 }
 
-.quizzTheme button, .quizzQuestions button{
-    width: 370px;
-    height: 54px;
+
+.quizzTheme button, .quizzQuestions button, .quizzCreatedSucess button, .quizzLevels button{
+   
+    height: 44px;
+    padding: 0px 40px 0 40px;
     background-color: #EC362D;
     border-radius: 15px;
     margin: 40px;
@@ -96,9 +103,44 @@ p{
     display: flex;
     justify-content: center;
     align-items: center;
-    text-align: center;
+    
+    cursor: pointer;
+    border: none
+}
+.quizzCreatedSucess > .buttonBackToHome {
+    background-color: transparent;
+    color: #818181;
+    border: none;
+    margin-top:-39px;
+}
+.quizzLevels > .addLevelButton{
+ border-radius: 0;
+
+ justify-content: space-between;
+ color: black;
+ 
+}
+
+.quizzLevels img {
+    size: 10px
+}
+.quizzCreatedSucess img {
+    height: 270px;
+    width: 500px;
+    border-radius: 5px;
+    margin: 46px 0 5px 0;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 65.62%, rgba(0, 0, 0, 0.8) 100%), url(image.png);
 
 }
+
+.imgQuizzCreatedSucess p {
+  position: relative;
+  bottom: 50px;
+  left: 23px;
+  color: #FFFFFF;
+  font-weight: 400;
+}
+
 
 .quizzQuestions .question, .answerCorrect, .answersIncorrect{
     margin: 10px;

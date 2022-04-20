@@ -1,0 +1,36 @@
+[33mcommit bbd7c89b2da29621bec84ca1cb658aec05cb0f24[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: juansued1233536 <92616927+juansued1233536@users.noreply.github.com>
+Date:   Tue Apr 19 22:04:45 2022 -0300
+
+    versão 3 juan
+
+[33mcommit 42b566ec11439d654d8af5ee4da9514c59c338ec[m
+Author: juansued1233536 <92616927+juansued1233536@users.noreply.github.com>
+Date:   Tue Apr 19 20:53:22 2022 -0300
+
+    versão 2 juan
+
+[33mcommit e059687ec1a362588f10efb55427dc3c165c58ef[m
+Merge: dbb0f8b fdeaaf4
+Author: juansued1233536 <92616927+juansued1233536@users.noreply.github.com>
+Date:   Tue Apr 19 20:50:10 2022 -0300
+
+    Merge branch 'main' of https://github.com/Audrey-Costa/Projeto_06_BuzzQuizz3 into main
+
+[33mcommit dbb0f8ba835b2397f5b130f8a1ce7ea72ff0138e[m
+Author: juansued1233536 <92616927+juansued1233536@users.noreply.github.com>
+Date:   Tue Apr 19 20:16:02 2022 -0300
+
+    versão com html juan
+
+[33mcommit fdeaaf4c7db0cbe66c378bc3eaa4580901b96bf1[m
+Author: Audrey-Costa <audreycosta@nano.ufrj.br>
+Date:   Tue Apr 19 20:03:40 2022 -0300
+
+    reset, scripts, style
+
+[33mcommit 07e3a30b38ae6aab7c9e92dfb4e9c570b66ff9ed[m
+Author: Audrey-Costa <audreycosta@nano.ufrj.br>
+Date:   Tue Apr 19 17:22:44 2022 -0300
+
+    first commit
