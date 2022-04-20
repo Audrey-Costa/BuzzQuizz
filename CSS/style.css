@@ -68,6 +68,13 @@ header{
     padding: 10px;
 }
 
+.quizzQuestions .option, .quizzLevels .option{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .quizzTheme input, .quizzQuestions input, .quizzLevels input{
     width: 564px;
     height: 46px;
@@ -81,7 +88,7 @@ header{
     font-weight: 400;
     font-size: 19px;
     line-height: 22px;
-    color: #BABABA;
+    color: #000000;
 
 
 }
@@ -113,13 +120,6 @@ header{
     border: none;
     margin-top:-39px;
 }
-.quizzLevels > .addLevelButton{
- border-radius: 0;
-
- justify-content: space-between;
- color: black;
- 
-}
 
 .quizzLevels img {
     size: 10px
@@ -129,7 +129,7 @@ header{
     width: 500px;
     border-radius: 5px;
     margin: 46px 0 5px 0;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 65.62%, rgba(0, 0, 0, 0.8) 100%), url(image.png);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.5) 65.62%, rgba(0, 0, 0, 0.8) 100%);
 
 }
 
@@ -147,5 +147,9 @@ header{
 }
 
 .answersIncorrect div{
-    margin: 16px;
+    margin-bottom: 32px;
+}
+
+.hide{
+    display: none;
 }

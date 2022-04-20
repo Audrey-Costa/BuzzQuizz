@@ -7,7 +7,7 @@
     <title>BuzzQuizz</title>
     <link rel="stylesheet" href="CSS/reset.css">
     <link rel="stylesheet" href="CSS/style.css">
-    <link rel="icon" href="Images/uol.png" type="image/x-icon">
+    <link rel="icon" href="Img/BuzzFeed-symbol-YT_ropfjt.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
     rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -26,6 +26,7 @@
         <div class="home">
 
         </div>
+        <!-- === PAG 2 -> QUIZZ PLAY  ===-->
         <div class="quizzPlay">
     
         </div>
@@ -40,9 +41,9 @@
                 </div>
                 <div class="inputs">
                     <input type="text" placeholder="Título do seu quizz">
-                    <input type="text" placeholder="URL da imagem do seu quizz">
-                    <input type="text" placeholder="Quantidade de perguntas do quizz">
-                    <input type="text" placeholder="Quantidade de níveis do quizz">
+                    <input type="url" placeholder="URL da imagem do seu quizz">
+                    <input type="number" placeholder="Quantidade de perguntas do quizz">
+                    <input type="number" placeholder="Quantidade de níveis do quizz">
                 </div>
                 <button>Prosseguir para Criar Perguntas</button>
             </div>
@@ -52,10 +53,15 @@
                     <p>Crie suas perguntas</p>
                 </div>
                 <div class="inputs">
-                    <div class="question">
+                    <div class="option">
                         <p>Pergunta 1</p>
+                        <img src="Img/Vector.svg" alt="">
+                    </div>
+                    <div class="question">
+                        <div>
                         <input type="text" placeholder="Texto da pergunta">
                         <input type="text" placeholder="Cor de fundo da pergunta">
+                        </div>
                     </div>
                     <div class="answerCorrect">
                         <p>Resposta correta</p>
@@ -81,7 +87,7 @@
                 <button>Prosseguir para Criar Níveis</button>
             </div>
              <!-- === PAG 3 -> LEVELS QUIZZ ===-->
-             <div class="quizzLevels">
+            <div class="quizzLevels">
                 <div class="leading">
                     <p>Agora, decida os níveis</p>
                 </div>
@@ -92,14 +98,8 @@
                         <input type="number" placeholder="% de acerto míníma">
                         <input type="url" placeholder="URL da imagem do nível">
                         <input type="text" placeholder="Descrição do nível">
-                       
-                      
                     </div>
-                  
                 </div>
-                <button class="addLevelButton"> <p>adicionar nível</p>
-                 <icon><img src="Img/vectorEdit.jpeg" alt=""></icon>
-                 </button>
                 <button>Prosseguir para Criar Níveis</button>
             </div>
             
