@@ -26,13 +26,17 @@
         <div class="home">
 
         </div>
+
+        
         <!-- === PAG 2 -> QUIZZ PLAY  ===-->
         <div class="quizzPlay">
     
         </div>
 
+
          <!-- === PAG 3 -> QUIZZ CREATE  ===-->
         <div class="quizzCreator">
+
 
             <!-- === PAG 3 -> BASIC INFO QUIZZ ===-->
             <div class="quizzTheme">
@@ -47,15 +51,17 @@
                 </div>
                 <button onclick="validationQuizzTheme()">Prosseguir para Criar Perguntas</button>
             </div>
+
+
             <!-- === PAG 3 -> QUESTION QUIZZ ===-->
             <div class="quizzQuestions hide">
                 <div class="leading">
                     <p>Crie suas perguntas</p>
                 </div>
-                <div class="inputs show" onclick="openInputQuestions(this)">
+                <div class="inputs show">
                     <div class="option">
                         <p>Pergunta 1</p>
-                        <img src="Img/Vector.svg" class="hide">
+                        <img src="Img/Vector.svg" onclick="openInputQuestions(this)" class="hide">
                     </div>
                     <div class="question">
                         <div>
@@ -85,15 +91,17 @@
                     </div>
                 </div>
             </div>
+
+
              <!-- === PAG 3 -> LEVELS QUIZZ ===-->
             <div class="quizzLevels hide">
                 <div class="leading">
                     <p>Agora, decida os níveis</p>
                 </div>
-                <div class="inputs show" onclick="openInputLevel(this)">
+                <div class="inputs show">
                     <div class="option">
                         <p>Nível 1</p>
-                        <img src="Img/Vector.svg" class="hide">
+                        <img src="Img/Vector.svg" onclick="openInputLevel(this)" class="hide">
                     </div>
                     <div class="level">
                         <input class="text" type="text" placeholder="Título do nível">
@@ -105,10 +113,6 @@
             </div>
             
 
-
-
-
-
             <!-- === SUCESS QUIZZ CREATED ===-->
 
             <div class="quizzCreatedSucess hide">
@@ -117,10 +121,6 @@
                 </div>
 
                 <div class="imgQuizzCreatedSucess">
-                    <img src="Img/narutinSucessCreated.jpg" alt="">
-                    <p>
-                        Aqui vai o  question.inputs.title
-                    </p>
                 </div>
                 <button>Acessar Quizz</button>
                 <button class="buttonBackToHome"> Voltar pra home</button>

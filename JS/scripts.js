@@ -92,10 +92,10 @@ function validationQuizzTheme(){
 function goToQuizzQuestions(){
     for (let i = 1; i < Number(qTinQ); i++){
         document.querySelector(".quizzQuestions").innerHTML += 
-        `<div class="inputs" onclick="openInputQuestions(this)">
+        `<div class="inputs">
         <div class="option">
             <p>Pergunta ${i + 1}</p>
-            <img src="Img/Vector.svg" class="">
+            <img src="Img/Vector.svg" onclick="openInputQuestions(this)" class="">
         </div>
         <div class="question hide">
             <div>
@@ -125,31 +125,37 @@ function goToQuizzQuestions(){
         </div>
     </div>`
     }
-    document.querySelector(".quizzQuestions").innerHTML += `<button onclick="goToQuizzLevel()">Prosseguir para Criar Níveis</button>`
+    document.querySelector(".quizzQuestions").innerHTML += `<button onclick="goToQuizzLevel()" class="button">Prosseguir para Criar Níveis</button>`
     document.querySelector(".quizzTheme").classList.add("hide");
     document.querySelector(".quizzQuestions").classList.remove("hide");
 }
 
 function openInputQuestions(element){
+    let grandfather = element.parentNode.parentNode; //Recebe o elemento "avô" do icone.
+    //aqui precisa entrar a validação da pergunta antes de ir pra proxima pergunta.
+
+    //Abre e fecha das perguntas
+    //if (ValidaQuizQuestions(element)){}
     document.querySelector(".quizzQuestions .show .question").classList.add("hide")
     document.querySelector(".quizzQuestions .show .answerCorrect").classList.add("hide")
     document.querySelector(".quizzQuestions .show .answersIncorrect").classList.add("hide")
     document.querySelector(".quizzQuestions .show img").classList.remove("hide")
     document.querySelector(".quizzQuestions .show").classList.remove("show")
-    element.classList.add("show")
-    element.querySelector("img").classList.add("hide")
-    element.querySelector(".question").classList.remove("hide")
-    element.querySelector(".answerCorrect").classList.remove("hide")
-    element.querySelector(".answersIncorrect").classList.remove("hide")
+    
+    grandfather.classList.add("show")
+    grandfather.querySelector("img").classList.add("hide")
+    grandfather.querySelector(".question").classList.remove("hide")
+    grandfather.querySelector(".answerCorrect").classList.remove("hide")
+    grandfather.querySelector(".answersIncorrect").classList.remove("hide")
 }
 
 function goToQuizzLevel(){
     for (let i = 1; i < Number(qTinL); i++){
         document.querySelector(".quizzLevels").innerHTML +=
-        `<div class="inputs" onclick="openInputLevel(this)">
+        `<div class="inputs">
         <div class="option">
             <p>Nível ${i + 1}</p>
-            <img src="Img/Vector.svg" class="">
+            <img src="Img/Vector.svg" onclick="openInputLevel(this)" class="">
         </div>
         <div class="level hide">
             <input class="text" type="text" placeholder="Título do nível">
@@ -159,42 +165,46 @@ function goToQuizzLevel(){
         </div>
     </div>`
     }
-    document.querySelector(".quizzLevels").innerHTML += `<button onclick="validationQuizzLevels()">Prosseguir para Criar Níveis</button>`
+    document.querySelector(".quizzLevels").innerHTML += `<button onclick="validationQuizzLevels(this)" class="button">Prosseguir para Criar Níveis</button>`
     document.querySelector(".quizzQuestions").classList.add("hide");
     document.querySelector(".quizzLevels").classList.remove("hide");
 }
 
 function openInputLevel(element){
-    document.querySelector(".quizzLevels .show .level").classList.add("hide")
-    document.querySelector(".quizzLevels .show img").classList.remove("hide")
-    document.querySelector(".quizzLevels .show").classList.remove("show")
-    element.classList.add("show")
-    element.querySelector("img").classList.add("hide")
-    element.querySelector(".level").classList.remove("hide")
+    let grandfather = element.parentNode.parentNode; //Recebe o elemento "avô" do icone.
+    if(validationQuizzLevels(element)){
+        //Abre e fecha dos níveis.
+        document.querySelector(".quizzLevels .show .level").classList.add("hide")
+        document.querySelector(".quizzLevels .show img").classList.remove("hide")
+        document.querySelector(".quizzLevels .show").classList.remove("show")
+        grandfather.classList.add("show")
+        grandfather.querySelector("img").classList.add("hide")
+        grandfather.querySelector(".level").classList.remove("hide")
+    }
+
 }
 
 let percent = 1;
 
-function validationQuizzLevels(){
+function validationQuizzLevels(element){
     let qLitErr = "";
     let qLinAErr = "";
     let qLiuErr = "";
     let qLdErr = "";
     let percentErr = "";
-    qLit = document.querySelector(".quizzLevels .text").value;
-    qLinA = document.querySelector(".quizzLevels .percent").value; 
-    qLiu = document.querySelector(".quizzLevels .url").value;
-    qLd = document.querySelector(".quizzLevels .description").value;
-    if (qLit < 10){
+    c(element.classList.contains("button"))
+    qLit = document.querySelector(".quizzLevels .show .text").value;
+    qLinA = document.querySelector(".quizzLevels .show .percent").value; 
+    qLiu = document.querySelector(".quizzLevels .show .url").value;
+    qLd = document.querySelector(".quizzLevels .show .description").value;
+    if (qLit.length < 10){
         qLitErr = "\n -Um título com no mínimo 10 caracteres.";
     }
     if (qLinA < 0 || qLinA > 100){
         qLinAErr = "\n -Porcentagens de acerto definidas entre 0% e 100%.";
     }
-    c(typeof(qLinA))
     if (Number(qLinA) === 0){
         percent = 0;
-        c(percent, "ei")
     }
     if (!qLiu.startsWith("https://")){
         qLiuErr = "\n -Uma URL válida para a imagem.";
@@ -208,14 +218,22 @@ function validationQuizzLevels(){
     if (qLitErr || qLinAErr || qLiuErr || qLdErr || percentErr){
         alert(`O nível deve ter: ${qLitErr}${qLinAErr}${qLiuErr}${qLdErr}${percentErr}`);
         percent = 1;
-        c(percent, "ou")
+        return false;
     }else{
-        goToQuizzCreatedSucess();
-        c("foi")
+        if (element.classList.contains("button")){
+            goToQuizzCreatedSucess()
+        }else{
+            return true;
+            c("foi")
+        }
     }
 }
 
 function goToQuizzCreatedSucess(){
     document.querySelector(".quizzLevels").classList.add("hide");
+    document.querySelector(".quizzCreatedSucess .imgQuizzCreatedSucess").innerHTML = `<img src="${qTiu}" alt="Não foi possível carregar a imagem, use uma url de imagem.">
+    <p>
+        ${qTit}
+    </p>`
     document.querySelector(".quizzCreatedSucess").classList.remove("hide");
 }
