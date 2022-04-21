@@ -85,14 +85,14 @@ function validationQuizzTheme(){
     if (qTitErr || qTiuErr || qTinQErr || qTinLErr){
         alert(`O quiz deve ter: ${qTitErr}${qTiuErr}${qTinQErr}${qTinLErr}`);
     }else{
-        goToQuizzCreation();
+        goToQuizzQuestions();
     }
 }
 
-function goToQuizzCreation(){
+function goToQuizzQuestions(){
     for (let i = 1; i < Number(qTinQ); i++){
         document.querySelector(".quizzQuestions").innerHTML += 
-        `<div class="inputs">
+        `<div class="inputs" onclick="openInputQuestions(this)">
         <div class="option">
             <p>Pergunta ${i + 1}</p>
             <img src="Img/Vector.svg" class="">
@@ -130,10 +130,23 @@ function goToQuizzCreation(){
     document.querySelector(".quizzQuestions").classList.remove("hide");
 }
 
+function openInputQuestions(element){
+    document.querySelector(".quizzQuestions .show .question").classList.add("hide")
+    document.querySelector(".quizzQuestions .show .answerCorrect").classList.add("hide")
+    document.querySelector(".quizzQuestions .show .answersIncorrect").classList.add("hide")
+    document.querySelector(".quizzQuestions .show img").classList.remove("hide")
+    document.querySelector(".quizzQuestions .show").classList.remove("show")
+    element.classList.add("show")
+    element.querySelector("img").classList.add("hide")
+    element.querySelector(".question").classList.remove("hide")
+    element.querySelector(".answerCorrect").classList.remove("hide")
+    element.querySelector(".answersIncorrect").classList.remove("hide")
+}
+
 function goToQuizzLevel(){
     for (let i = 1; i < Number(qTinL); i++){
         document.querySelector(".quizzLevels").innerHTML +=
-        `<div class="inputs">
+        `<div class="inputs" onclick="openInputLevel(this)">
         <div class="option">
             <p>Nível ${i + 1}</p>
             <img src="Img/Vector.svg" class="">
@@ -149,6 +162,15 @@ function goToQuizzLevel(){
     document.querySelector(".quizzLevels").innerHTML += `<button onclick="validationQuizzLevels()">Prosseguir para Criar Níveis</button>`
     document.querySelector(".quizzQuestions").classList.add("hide");
     document.querySelector(".quizzLevels").classList.remove("hide");
+}
+
+function openInputLevel(element){
+    document.querySelector(".quizzLevels .show .level").classList.add("hide")
+    document.querySelector(".quizzLevels .show img").classList.remove("hide")
+    document.querySelector(".quizzLevels .show").classList.remove("show")
+    element.classList.add("show")
+    element.querySelector("img").classList.add("hide")
+    element.querySelector(".level").classList.remove("hide")
 }
 
 let percent = 1;
