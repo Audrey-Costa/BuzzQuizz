@@ -90,45 +90,100 @@ function validationQuizzTheme(){
 }
 
 function goToQuizzCreation(){
+    for (let i = 1; i < Number(qTinQ); i++){
+        document.querySelector(".quizzQuestions .inputs").innerHTML += 
+        `<div class="option">
+        <p>Pergunta ${i+1}</p>
+        <img src="Img/Vector.svg" class="hide">
+    </div>
+    <div class="question">
+        <div>
+        <input class="inputTextQuestion" type="text" placeholder="Texto da pergunta">
+        <input class="inputBackgroundColorQuestion" type="text" placeholder="Cor de fundo da pergunta">
+        </div>
+    </div>
+    <div class="answerCorrect">
+        <p>Resposta correta</p>
+        <input class="inputAnswerCorrect" type="text" placeholder="Resposta correta">
+        <input class="inputUrlImageAnswerCorrect" type="text" placeholder="URL da imagem">
+    </div>
+    <div class="answersIncorrect">
+        <p>Respostas incorretas</p>
+        <div>
+            <input class="inputAnswersIncorrect1" type="text" placeholder="Resposta incorreta 1">
+            <input type="text" placeholder="URL da imagem 1">
+        </div>
+        <div>
+            <input class="inputAnswersIncorrect2" type="text" placeholder="Resposta incorreta 2">
+            <input type="text" placeholder="URL da imagem 2">
+        </div>
+        <div>
+            <input class="inputAnswersIncorrect3" type="text" placeholder="Resposta incorreta 3">
+            <input type="text" placeholder="URL da imagem 3">
+        </div>
+    </div>`
+    }
     document.querySelector(".quizzTheme").classList.add("hide");
     document.querySelector(".quizzQuestions").classList.remove("hide");
 }
 
 function goToQuizzLevel(){
+    for (let i = 1; i < Number(qTinL); i++){
+        document.querySelector(".quizzLevels .inputs").innerHTML +=
+        `<div class="option">
+        <p>Nível ${i+1}</p>
+        <img src="Img/Vector.svg" class="hide">
+    </div>
+    <div class="level">
+        <input class="text" type="text" placeholder="Título do nível">
+        <input class="percent" type="number" placeholder="% de acerto míníma">
+        <input class="url" type="url" placeholder="URL da imagem do nível">
+        <input class="description" type="text" placeholder="Descrição do nível">
+    </div>`
+    }
     document.querySelector(".quizzQuestions").classList.add("hide");
     document.querySelector(".quizzLevels").classList.remove("hide");
 }
+
+let percent = 1;
 
 function validationQuizzLevels(){
     let qLitErr = "";
     let qLinAErr = "";
     let qLiuErr = "";
     let qLdErr = "";
-    let percentErr = 0;
+    let percentErr = "";
     qLit = document.querySelector(".quizzLevels .text").value;
     qLinA = document.querySelector(".quizzLevels .percent").value; 
     qLiu = document.querySelector(".quizzLevels .url").value;
     qLd = document.querySelector(".quizzLevels .description").value;
-
     if (qLit < 10){
         qLitErr = "\n -Um título com no mínimo 10 caracteres.";
     }
     if (qLinA < 0 || qLinA > 100){
         qLinAErr = "\n -Porcentagens de acerto definidas entre 0% e 100%.";
     }
+    c(typeof(qLinA))
+    if (Number(qLinA) === 0){
+        percent = 0;
+        c(percent, "ei")
+    }
     if (!qLiu.startsWith("https://")){
         qLiuErr = "\n -Uma URL válida para a imagem.";
     }
-    if (qLd < 30){
+    if (qLd.length < 30){
         qLdErr = "\n -No mínimo 30 caracteres na descrição.";
     }
-    if (!percentErr){
+    if (percent !== 0){
         percentErr = "\n -Pelo menos um nível para 0 acertos."
     }
-    if (qLitErr || qLinAErr || qLiuErr || qLdErr){
+    if (qLitErr || qLinAErr || qLiuErr || qLdErr || percentErr){
         alert(`O nível deve ter: ${qLitErr}${qLinAErr}${qLiuErr}${qLdErr}${percentErr}`);
+        percent = 1;
+        c(percent, "ou")
     }else{
         goToQuizzCreatedSucess();
+        c("foi")
     }
 }
 
