@@ -61,9 +61,10 @@ header{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 27px;
+    margin-top: 27px;
     background: #FFFFFF;
     padding: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
 }
 
 .quizzQuestions .option, .quizzLevels .option{

@@ -91,56 +91,62 @@ function validationQuizzTheme(){
 
 function goToQuizzCreation(){
     for (let i = 1; i < Number(qTinQ); i++){
-        document.querySelector(".quizzQuestions .inputs").innerHTML += 
-        `<div class="option">
-        <p>Pergunta ${i+1}</p>
-        <img src="Img/Vector.svg" class="hide">
-    </div>
-    <div class="question">
-        <div>
-        <input class="inputTextQuestion" type="text" placeholder="Texto da pergunta">
-        <input class="inputBackgroundColorQuestion" type="text" placeholder="Cor de fundo da pergunta">
+        document.querySelector(".quizzQuestions").innerHTML += 
+        `<div class="inputs">
+        <div class="option">
+            <p>Pergunta ${i + 1}</p>
+            <img src="Img/Vector.svg" class="">
         </div>
-    </div>
-    <div class="answerCorrect">
-        <p>Resposta correta</p>
-        <input class="inputAnswerCorrect" type="text" placeholder="Resposta correta">
-        <input class="inputUrlImageAnswerCorrect" type="text" placeholder="URL da imagem">
-    </div>
-    <div class="answersIncorrect">
-        <p>Respostas incorretas</p>
-        <div>
-            <input class="inputAnswersIncorrect1" type="text" placeholder="Resposta incorreta 1">
-            <input type="text" placeholder="URL da imagem 1">
+        <div class="question hide">
+            <div>
+            <input class="inputTextQuestion" type="text" placeholder="Texto da pergunta">
+            <input class="inputBackgroundColorQuestion" type="text" placeholder="Cor de fundo da pergunta">
+            </div>
         </div>
-        <div>
-            <input class="inputAnswersIncorrect2" type="text" placeholder="Resposta incorreta 2">
-            <input type="text" placeholder="URL da imagem 2">
+        <div class="answerCorrect hide">
+            <p>Resposta correta</p>
+            <input class="inputAnswerCorrect" type="text" placeholder="Resposta correta">
+            <input class="inputUrlImageAnswerCorrect" type="text" placeholder="URL da imagem">
         </div>
-        <div>
-            <input class="inputAnswersIncorrect3" type="text" placeholder="Resposta incorreta 3">
-            <input type="text" placeholder="URL da imagem 3">
+        <div class="answersIncorrect hide">
+            <p>Respostas incorretas</p>
+            <div>
+                <input class="inputAnswersIncorrect1" type="text" placeholder="Resposta incorreta 1">
+                <input type="text" placeholder="URL da imagem 1">
+            </div>
+            <div>
+                <input class="inputAnswersIncorrect2" type="text" placeholder="Resposta incorreta 2">
+                <input type="text" placeholder="URL da imagem 2">
+            </div>
+            <div>
+                <input class="inputAnswersIncorrect3" type="text" placeholder="Resposta incorreta 3">
+                <input type="text" placeholder="URL da imagem 3">
+            </div>
         </div>
     </div>`
     }
+    document.querySelector(".quizzQuestions").innerHTML += `<button onclick="goToQuizzLevel()">Prosseguir para Criar Níveis</button>`
     document.querySelector(".quizzTheme").classList.add("hide");
     document.querySelector(".quizzQuestions").classList.remove("hide");
 }
 
 function goToQuizzLevel(){
     for (let i = 1; i < Number(qTinL); i++){
-        document.querySelector(".quizzLevels .inputs").innerHTML +=
-        `<div class="option">
-        <p>Nível ${i+1}</p>
-        <img src="Img/Vector.svg" class="hide">
-    </div>
-    <div class="level">
-        <input class="text" type="text" placeholder="Título do nível">
-        <input class="percent" type="number" placeholder="% de acerto míníma">
-        <input class="url" type="url" placeholder="URL da imagem do nível">
-        <input class="description" type="text" placeholder="Descrição do nível">
+        document.querySelector(".quizzLevels").innerHTML +=
+        `<div class="inputs">
+        <div class="option">
+            <p>Nível ${i + 1}</p>
+            <img src="Img/Vector.svg" class="">
+        </div>
+        <div class="level hide">
+            <input class="text" type="text" placeholder="Título do nível">
+            <input class="percent" type="number" placeholder="% de acerto míníma">
+            <input class="url" type="url" placeholder="URL da imagem do nível">
+            <input class="description" type="text" placeholder="Descrição do nível">
+        </div>
     </div>`
     }
+    document.querySelector(".quizzLevels").innerHTML += `<button onclick="validationQuizzLevels()">Prosseguir para Criar Níveis</button>`
     document.querySelector(".quizzQuestions").classList.add("hide");
     document.querySelector(".quizzLevels").classList.remove("hide");
 }
