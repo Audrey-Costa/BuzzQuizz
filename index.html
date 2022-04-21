@@ -40,15 +40,15 @@
                     <p>Começe pelo começo</p>
                 </div>
                 <div class="inputs">
-                    <input type="text" placeholder="Título do seu quizz">
-                    <input type="url" placeholder="URL da imagem do seu quizz">
-                    <input type="number" placeholder="Quantidade de perguntas do quizz">
-                    <input type="number" placeholder="Quantidade de níveis do quizz">
+                    <input class="title" type="text" placeholder="Título do seu quizz">
+                    <input class="url" type="url" placeholder="URL da imagem do seu quizz">
+                    <input class="numberQuestions" type="number" placeholder="Quantidade de perguntas do quizz">
+                    <input class="numberLevels" type="number" placeholder="Quantidade de níveis do quizz">
                 </div>
-                <button>Prosseguir para Criar Perguntas</button>
+                <button onclick="validationQuizzTheme()">Prosseguir para Criar Perguntas</button>
             </div>
             <!-- === PAG 3 -> QUESTION QUIZZ ===-->
-            <div class="quizzQuestions">
+            <div class="quizzQuestions hide">
                 <div class="leading">
                     <p>Crie suas perguntas</p>
                 </div>
@@ -87,7 +87,7 @@
                 <button>Prosseguir para Criar Níveis</button>
             </div>
              <!-- === PAG 3 -> LEVELS QUIZZ ===-->
-            <div class="quizzLevels">
+            <div class="quizzLevels hide">
                 <div class="leading">
                     <p>Agora, decida os níveis</p>
                 </div>
@@ -113,7 +113,7 @@
 
             <!-- === SUCESS QUIZZ CREATED ===-->
 
-            <div class="quizzCreatedSucess">
+            <div class="quizzCreatedSucess hide">
                 <div class="leading">
                     <p>Seu quizz está pronto!</p>
                 </div>
