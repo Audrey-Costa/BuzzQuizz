@@ -24,7 +24,21 @@
 
      <!-- === HOME ===-->
         <div class="home">
-
+            <div class="userQuizzEmpity">
+                <div><p>Você não criou nenhum quizz ainda :(</p></div>
+                <button onclick="goToQuizzCreator()">Criar Quizz</button>
+            </div>
+            <div class="userQuizz">
+                <div>
+                    <p>Seus quizzes</p>
+                    <ion-icon name="add-circle" onclick="goToQuizzCreator()"></ion-icon>
+                </div>
+                <div class="quizzes"></div>
+            </div>
+            <div class="otherquizz">
+                <div><p>Todos os quizzes</p></div>
+                <div class="quizzes"></div>
+            </div>
         </div>
 
         
@@ -35,7 +49,7 @@
 
 
          <!-- === PAG 3 -> QUIZZ CREATE  ===-->
-        <div class="quizzCreator">
+        <div class="quizzCreator hide">
 
 
             <!-- === PAG 3 -> BASIC INFO QUIZZ ===-->

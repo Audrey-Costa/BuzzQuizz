@@ -1,3 +1,8 @@
+function goToQuizzCreator(){
+    document.querySelector(".home").classList.add("hide")
+    document.querySelector(".quizzCreator").classList.remove("hide")
+}
+
 
  let inputTextQuestion = document.querySelector(".inputTextQuestion")
  let inputBackgroundColorQuestion = document.querySelector(".inputBackgroundColorQuestion")
