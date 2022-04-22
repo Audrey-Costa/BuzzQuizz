@@ -127,9 +127,15 @@ function validationQuizQuestions() {
 
     if (qQibc[0] === "#") {
         qQibcFinal += "#"
+    } else {
+        qQibcErr = "\n -O código hexadecimal deve conter o seguinte padrão: '#F2F2F2' (A-F e 0-9) .";
     }
     for (let i = 0; i < arrBCH.length; i++) {
-
+        if (qQibc[0] === arrBCH[i]) {
+            qQibcFinal += arrBCH[i]
+        }
+    }
+    for (let i = 0; i < arrBCH.length; i++) {
         if (qQibc[1] === arrBCH[i]) {
             qQibcFinal += arrBCH[i]
         }
@@ -161,8 +167,17 @@ function validationQuizQuestions() {
             qQibcFinal += arrBCH[i]
         }
     }
+    for (let i = 0; i < arrBCH.length; i++) {
+        if (qQibc[7] === arrBCH[i]) {
+            qQibcFinal += arrBCH[i]
+        }
+    }
 
+<<<<<<< HEAD
     console.log(qQibcFinal)
+=======
+    c(qQibcFinal)
+>>>>>>> 306328b3a18ae684bb608633d0a17fc7bcf9f5cb
     if (qQibcFinal.length !== 7) {
         qQibcErr = "\n -O código hexadecimal deve conter o seguinte padrão: '#F2F2F2' (A-F e 0-9) .";
     }
