@@ -184,6 +184,10 @@ function validationQuizzLevels() {
 
 function goToQuizzCreatedSucess() {
     document.querySelector(".quizzLevels").classList.add("hide");
+    document.querySelector(".quizzCreatedSucess .imgQuizzCreatedSucess").innerHTML = `<img src="${qTiu}" alt="Não foi possível carregar a imagem, use uma url de imagem.">
+    <p>
+        ${qTit}
+    </p>`
     document.querySelector(".quizzCreatedSucess").classList.remove("hide");
 }
 
