@@ -1,53 +1,96 @@
 
- let inputTextQuestion = document.querySelector(".inputTextQuestion")
- let inputBackgroundColorQuestion = document.querySelector(".inputBackgroundColorQuestion")
- let inputAnswerCorrect = document.querySelector(".inputAnswerCorrect")
- let inputUrlImageAnswerCorrect = document.querySelector(".inputUrlImageAnswerCorrect")
- let inputAnswersIncorrect1 = document.querySelector(".inputAnswersIncorrect1")
- let inputAnswersIncorrect2 = document.querySelector(".inputAnswersIncorrect2")
- let inputAnswersIncorrect3 = document.querySelector(".inputAnswersIncorrect3")
-
-ValidaQuizQuestions();
+let qQit;    // qQit armazena o valor título do tema quiz
+let qQibc;   // qQibcErr armazena o valor do input para escolha da cor de fundo. 
+let qQiac;   // qQiac armazena o valor do input da resposta correta   
+let qQiuimgc;// armazena o vaalor do input da url imagem correta
+let qQiai1;  // armazena o valor do input da resposta incorreta 1
+let qQiai2;  // armazena o valor do input da resposta incorreta 2
+let qQiai3;  // armazena o valor do input da resposta incorreta 3
 
 
 function ValidaQuizQuestions() {
-    
-  // Se o input de texto da questão for inválido, zera o input
-   if (inputTextQuestion.value === undefined || !isNaN(inputTextQuestion.value) || inputTextQuestion.value.length < 20) {
-   
-    inputTextQuestion.value = "";
-   } 
+    // errors
+    let qQitErr = "";
+    let qQibcErr = "";
+    let qQiACErr = "";
+    let qQiImgErr = "";
+    let qQiAI1Err = "";
+    let qQiAI2Err = "";
+    let qQiAI3Err = "";
 
-   if (inputBackgroundColorQuestion.value === undefined || inputBackgroundColorQuestion.value.length > 7 || inputBackgroundColorQuestion.value[0] !== "#") { // talvez fazer um for com array de A até F e 0 a 9
-    inputBackgroundColorQuestion.value = "";
-   }
+    //inputs values 
+    qQit = document.querySelector(".inputTextQuestion").value
+    qQibc = document.querySelector(".inputBackgroundColorQuestion").value.toLowerCase()
+    qQiac = document.querySelector(".inputAnswerCorrect").value
+    qQiuimgc = document.querySelector(".inputUrlImageAnswerCorrect").value
+    qQiai1 = document.querySelector(".inputAnswersIncorrect1").value
+    qQiai2 = document.querySelector(".inputAnswersIncorrect2").value
+    qQiai3 = document.querySelector(".inputAnswersIncorrect3").value
 
-   if (inputAnswerCorrect.value === undefined || inputAnswerCorrect.value.length === "") {
-    inputTextQuestion.value = "";
-   }
-   if (inputUrlImageAnswerCorrect.value === undefined || !isNaN(inputUrlImageAnswerCorrect.value) || inputUrlImageAnswerCorrect.value.length >= 30) {
-    inputUrlImageAnswerCorrect.value = "";
-   }
 
-    if((inputAnswersIncorrect1 || inputAnswersIncorrect2 || inputAnswersIncorrect3) !== undefined ){
-        if (!isNaN(inputAnswersIncorrect1.value) || inputAnswersIncorrect1.value.length >= 30) {
-            inputAnswersIncorrect1.value = "";
-           }
-        if (!isNaN(inputAnswersIncorrect2.value) || inputAnswersIncorrect2.value.length >= 30) {
-            inputAnswersIncorrect2.value = "";
-           }
-        if (!isNaN(inputAnswersIncorrect3.value) || inputAnswersIncorrect3.value.length >= 30) {
-            inputAnswersIncorrect3.value = "";
-           }
-         }
-if((inputTextQuestion.value || inputBackgroundColorQuestion.value || inputAnswerCorrect.value || inputUrlImageAnswerCorrect.value || inputAnswersIncorrect1 || inputAnswersIncorrect2 || inputAnswersIncorrect3) === !undefined || ""){
-   alert("tem algo errado") 
- 
-} else{
-    
-}
 
-   
+    if (qQit.length < 20 || qQit.length > 65) {
+        qQitErr = "\n -Um título com no mínimo 20 caracteres e no máximo 65 caracteres.";
+    }
+
+
+
+    let qQibcFinal = ""
+
+    const arrBCH = ["a", "b", "c", "d", "e", "f", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+
+    if (qQibc[0] === "#") {
+        qQibcFinal += "#"
+    }
+    for (let i = 0; i < arrBCH.length; i++) {
+
+        if (qQibc[1] === arrBCH[i]) {
+            qQibcFinal += arrBCH[i]
+        }
+    }
+    for (let i = 0; i < arrBCH.length; i++) {
+        if (qQibc[2] === arrBCH[i]) {
+            qQibcFinal += arrBCH[i]
+        }
+    }
+    for (let i = 0; i < arrBCH.length; i++) {
+
+        if (qQibc[3] === arrBCH[i]) {
+            qQibcFinal += arrBCH[i]
+        }
+    }
+    for (let i = 0; i < arrBCH.length; i++) {
+
+        if (qQibc[4] === arrBCH[i]) {
+            qQibcFinal += arrBCH[i]
+        }
+    } for (let i = 0; i < arrBCH.length; i++) {
+
+        if (qQibc[5] === arrBCH[i]) {
+            qQibcFinal += arrBCH[i]
+        }
+    }
+    for (let i = 0; i < arrBCH.length; i++) {
+        if (qQibc[6] === arrBCH[i]) {
+            qQibcFinal += arrBCH[i]
+        }
+    }
+
+    console.log(qQibcFinal)
+    if (qQibcFinal.length !== 7) {
+        qQibcErr = "\n -O código hexadecimal deve conter o seguinte padrão: '#F2F2F2' (A-F e 0-9) .";
+    }
+
+
+
+
+    if (qQitErr || qQibcErr) {
+        alert(`O quiz deve ter: ${qQitErr} ${qQibcErr} `)
+    }
+    else {
+
+    }
+    ////////////////////////////////////////////////////////////////////////////
 }
 let c = console.log.bind(document);
 
@@ -60,79 +103,90 @@ let qLinA; //qLina armazena o valor do input para a porcentagem de acertos.
 let qLiu;  //qLiu armazena o valor do input da url do nível.
 let qLd;   //qLd armazena o valor do input que descreve o nível
 
-function validationQuizzTheme(){
+function validationQuizzTheme() {
     let qTitErr = "";
     let qTiuErr = "";
     let qTinQErr = "";
     let qTinLErr = "";
     qTit = document.querySelector(".quizzTheme .inputs .title").value;
     qTiu = document.querySelector(".quizzTheme .inputs .url").value;
-    qTinQ = document.querySelector(".quizzTheme .inputs .numberQuestions").value; 
+    qTinQ = document.querySelector(".quizzTheme .inputs .numberQuestions").value;
     qTinL = document.querySelector(".quizzTheme .inputs .numberLevels").value;
 
-    if (qTit.length < 20 || qTit.length > 65){
+
+    if (qTit.length < 20 || qTit.length > 65) {
         qTitErr = "\n -Um título com no mínimo 20 caracteres e no máximo 65 caracteres.";
     }
-    if (!qTiu.startsWith("https://")){
+    if (!qTiu.startsWith("https://")) {
         qTiuErr = "\n -Uma URL válida para a imagem.";
     }
-    if (qTinQ < 3){
+    if (qTinQ < 3) {
         qTinQErr = "\n -Pelo menos 3 perguntas.";
     }
-    if (qTinL < 2){
+    if (qTinL < 2) {
         qTinLErr = "\n -Pelo menos 2 níveis.";
     }
-    if (qTitErr || qTiuErr || qTinQErr || qTinLErr){
+    //"" tem valor false
+    //"asdas" tem valor true
+    if (qTitErr || qTiuErr || qTinQErr || qTinLErr) {
         alert(`O quiz deve ter: ${qTitErr}${qTiuErr}${qTinQErr}${qTinLErr}`);
-    }else{
+    } else {
         goToQuizzCreation();
     }
 }
 
-function goToQuizzCreation(){
+function goToQuizzCreation() {
     document.querySelector(".quizzTheme").classList.add("hide");
     document.querySelector(".quizzQuestions").classList.remove("hide");
 }
 
-function goToQuizzLevel(){
+
+
+
+function goToQuizzLevel() {
     document.querySelector(".quizzQuestions").classList.add("hide");
     document.querySelector(".quizzLevels").classList.remove("hide");
 }
 
-function validationQuizzLevels(){
+//VALIDAÇÃO LEVELS
+function validationQuizzLevels() {
     let qLitErr = "";
     let qLinAErr = "";
     let qLiuErr = "";
     let qLdErr = "";
     let percentErr = 0;
     qLit = document.querySelector(".quizzLevels .text").value;
-    qLinA = document.querySelector(".quizzLevels .percent").value; 
+    qLinA = document.querySelector(".quizzLevels .percent").value;
     qLiu = document.querySelector(".quizzLevels .url").value;
     qLd = document.querySelector(".quizzLevels .description").value;
 
-    if (qLit < 10){
+    if (qLit < 10) {
         qLitErr = "\n -Um título com no mínimo 10 caracteres.";
     }
-    if (qLinA < 0 || qLinA > 100){
+    if (qLinA < 0 || qLinA > 100) {
         qLinAErr = "\n -Porcentagens de acerto definidas entre 0% e 100%.";
     }
-    if (!qLiu.startsWith("https://")){
+    if (!qLiu.startsWith("https://")) {
         qLiuErr = "\n -Uma URL válida para a imagem.";
     }
-    if (qLd < 30){
+    if (qLd < 30) {
         qLdErr = "\n -No mínimo 30 caracteres na descrição.";
     }
-    if (!percentErr){
+    if (!percentErr) {
         percentErr = "\n -Pelo menos um nível para 0 acertos."
     }
-    if (qLitErr || qLinAErr || qLiuErr || qLdErr){
+    if (qLitErr || qLinAErr || qLiuErr || qLdErr) {
         alert(`O nível deve ter: ${qLitErr}${qLinAErr}${qLiuErr}${qLdErr}${percentErr}`);
-    }else{
+    } else {
         goToQuizzCreatedSucess();
     }
 }
 
-function goToQuizzCreatedSucess(){
+function goToQuizzCreatedSucess() {
     document.querySelector(".quizzLevels").classList.add("hide");
     document.querySelector(".quizzCreatedSucess").classList.remove("hide");
 }
+
+
+
+
