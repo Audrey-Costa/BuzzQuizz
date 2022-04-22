@@ -1,8 +1,8 @@
-body{
+body {
     font-family: 'Roboto', sans-serif;
 }
 
-h1{
+h1 {
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 700;
@@ -11,7 +11,7 @@ h1{
     color: #FFFFFF;
 }
 
-p{
+p {
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 700;
@@ -24,16 +24,17 @@ p{
 
 }
 
-  
 
-.container{padding-top: 70px;
+
+.container {
+    padding-top: 70px;
     background-color: #FAFAFA;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-header{
+header {
     position: absolute;
     top: 0px;
     left: 0px;
@@ -137,12 +138,18 @@ header{
     background: #FAFAFA;
 }
 
-.quizzTheme .leading, .quizzQuestions .leading, .quizzLevels .leading, .quizzCreatedSucess .leading { 
+.quizzTheme .leading,
+.quizzQuestions .leading,
+.quizzLevels .leading,
+.quizzCreatedSucess .leading {
     height: 23px;
     margin-top: 60px;
 }
 
-.quizzTheme .inputs, .quizzQuestions .inputs, .quizzLevels .inputs, .quizzLevels .addLevelButton{
+.quizzTheme .inputs,
+.quizzQuestions .inputs,
+.quizzLevels .inputs,
+.quizzLevels .addLevelButton {
     width: 600px;
     display: flex;
     flex-direction: column;
@@ -154,14 +161,17 @@ header{
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
 }
 
-.quizzQuestions .option, .quizzLevels .option{
+.quizzQuestions .option,
+.quizzLevels .option {
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.quizzTheme input, .quizzQuestions input, .quizzLevels input{
+.quizzTheme input,
+.quizzQuestions input,
+.quizzLevels input {
     width: 564px;
     height: 46px;
     background: #FFFFFF;
@@ -180,8 +190,11 @@ header{
 }
 
 
-.quizzTheme button, .quizzQuestions button, .quizzCreatedSucess button, .quizzLevels button{
-   
+.quizzTheme button,
+.quizzQuestions button,
+.quizzCreatedSucess button,
+.quizzLevels button {
+
     height: 44px;
     padding: 0px 40px 0 40px;
     background-color: #EC362D;
@@ -196,20 +209,22 @@ header{
     display: flex;
     justify-content: center;
     align-items: center;
-    
+
     cursor: pointer;
     border: none
 }
-.quizzCreatedSucess > .buttonBackToHome {
+
+.quizzCreatedSucess>.buttonBackToHome {
     background-color: transparent;
     color: #818181;
     border: none;
-    margin-top:-39px;
+    margin-top: -39px;
 }
 
 .quizzLevels img {
     size: 10px
 }
+
 .quizzCreatedSucess img {
     height: 270px;
     width: 500px;
@@ -218,22 +233,25 @@ header{
 }
 
 .imgQuizzCreatedSucess p {
-  position: relative;
-  bottom: 50px;
-  left: 23px;
-  color: #FFFFFF;
-  font-weight: 400;
+    position: relative;
+    bottom: 50px;
+    left: 23px;
+    color: #FFFFFF;
+    font-weight: 400;
 }
 
 
-.quizzQuestions .question, .answerCorrect, .answersIncorrect, .level{
+.quizzQuestions .question,
+.answerCorrect,
+.answersIncorrect,
+.level {
     margin: 10px;
 }
 
-.answersIncorrect div{
+.answersIncorrect div {
     margin-bottom: 32px;
 }
 
-.hide{
+.hide {
     display: none;
 }
