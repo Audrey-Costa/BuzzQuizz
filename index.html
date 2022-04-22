@@ -28,7 +28,9 @@
         <!-- === HOME ===-->
         <div class="home">
             <div class="userQuizzEmpity">
-                <div><p>Você não criou nenhum quizz ainda :(</p></div>
+                <div>
+                    <p>Você não criou nenhum quizz ainda :(</p>
+                </div>
                 <button onclick="goToQuizzCreator()">Criar Quizz</button>
             </div>
             <div class="userQuizz">
@@ -39,7 +41,9 @@
                 <div class="quizzes"></div>
             </div>
             <div class="otherquizz">
-                <div><p>Todos os quizzes</p></div>
+                <div>
+                    <p>Todos os quizzes</p>
+                </div>
                 <div class="quizzes"></div>
             </div>
         </div>
@@ -51,7 +55,7 @@
         </div>
 
 
-         <!-- === PAG 3 -> QUIZZ CREATE  ===-->
+        <!-- === PAG 3 -> QUIZZ CREATE  ===-->
         <div class="quizzCreator hide">
 
 
@@ -66,7 +70,7 @@
                     <input class="numberQuestions" type="number" placeholder="Quantidade de perguntas do quizz">
                     <input class="numberLevels" type="number" placeholder="Quantidade de níveis do quizz">
                 </div>
-                <button onclick="validationQuizzTheme()">Prosseguir para Criar Perguntas</button>
+                <button onclick="goToQuizzQuestions()">Prosseguir para Criar Perguntas</button>
             </div>
 
 
@@ -95,16 +99,16 @@
                     <div class="answersIncorrect">
                         <p>Respostas incorretas</p>
                         <div>
-                            <input class="inputAnswersIncorrect1" type="text" placeholder="Resposta incorreta 1">
-                            <input type="text" placeholder="URL da imagem 1">
+                            <input class="inputAnswersIncorrect" type="text" placeholder="Resposta incorreta 1">
+                            <input class="inputImgAnswersIncorrect" type="text" placeholder="URL da imagem 1">
                         </div>
                         <div>
-                            <input class="inputAnswersIncorrect2" type="text" placeholder="Resposta incorreta 2">
-                            <input type="text" placeholder="URL da imagem 2">
+                            <input class="inputAnswersIncorrect" type="text" placeholder="Resposta incorreta 2">
+                            <input class="inputImgAnswersIncorrect" type="text" placeholder="URL da imagem 2">
                         </div>
                         <div>
-                            <input class="inputAnswersIncorrect3" type="text" placeholder="Resposta incorreta 3">
-                            <input type="text" placeholder="URL da imagem 3">
+                            <input class="inputAnswersIncorrect" type="text" placeholder="Resposta incorreta 3">
+                            <input class="inputImgAnswersIncorrect" type="text" placeholder="URL da imagem 3">
                         </div>
                     </div>
                 </div>

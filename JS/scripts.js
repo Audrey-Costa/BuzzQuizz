@@ -4,13 +4,7 @@ function goToQuizzCreator() {
 }
 
 
-let qQit;    // qQit armazena o valor título do tema quiz
-let qQibc;   // qQibcErr armazena o valor do input para escolha da cor de fundo. 
-let qQiac;   // qQiac armazena o valor do input da resposta correta   
-let qQiuimgc;// armazena o vaalor do input da url imagem correta
-let qQiai1;  // armazena o valor do input da resposta incorreta 1
-let qQiai2;  // armazena o valor do input da resposta incorreta 2
-let qQiai3;  // armazena o valor do input da resposta incorreta 3
+
 
 
 
@@ -90,36 +84,46 @@ function goToQuizzQuestions() {
         </div>
     </div>`
     }
-    document.querySelector(".quizzQuestions").innerHTML += `<button onclick="goToQuizzLevel()" class="button">Prosseguir para Criar Níveis</button>`
+    document.querySelector(".quizzQuestions").innerHTML += `<button onclick="ValidaQuizQuestions()" class="button">Prosseguir para Criar Níveis</button>`
     document.querySelector(".quizzTheme").classList.add("hide");
     document.querySelector(".quizzQuestions").classList.remove("hide");
 }
+
+
+
+let qQit;         // qQit armazena o valor título da pergunta
+let qQibc;        // qQibcErr armazena o valor do input para escolha da cor de fundo. 
+let qQiac;        // qQiac armazena o valor do input da resposta CORRETA   
+let qQiuimgc;     // armazena o vaalor do input da url imagem CORRETA
+let arrqQiai;     // armazena o valor dos inputs das respostas INCORRETAS
+let arrqQiuimgci; // armazena o valor dos inputs das imagens INCORRETAS 
+
 function ValidaQuizQuestions() {
     // errors
     let qQitErr = "";
     let qQibcErr = "";
     let qQiACErr = "";
     let qQiImgErr = "";
-    let qQiAI1Err = "";
-    let qQiAI2Err = "";
-    let qQiAI3Err = "";
+    let qQiAIErr = "";
+    let qQiImgIErr = "";
+
 
     //inputs values 
     qQit = document.querySelector(".inputTextQuestion").value
     qQibc = document.querySelector(".inputBackgroundColorQuestion").value.toLowerCase()
     qQiac = document.querySelector(".inputAnswerCorrect").value
     qQiuimgc = document.querySelector(".inputUrlImageAnswerCorrect").value
-    qQiai1 = document.querySelector(".inputAnswersIncorrect1").value
-    qQiai2 = document.querySelector(".inputAnswersIncorrect2").value
-    qQiai3 = document.querySelector(".inputAnswersIncorrect3").value
+    arrqQiai = document.querySelectorAll(".inputAnswersIncorrect")
+    arrqQiuimgci = document.querySelectorAll(".inputImgAnswersIncorrect")
 
+    console.log(arrqQiai)
 
 
     if (qQit.length < 20 || qQit.length > 65) {
         qQitErr = "\n -Um título com no mínimo 20 caracteres e no máximo 65 caracteres.";
     }
 
-
+    ///////////////////////////////// Valida código hexadecimal down
 
     let qQibcFinal = ""
 
@@ -162,19 +166,34 @@ function ValidaQuizQuestions() {
         }
     }
 
-    console.log(qQibcFinal)
     if (qQibcFinal.length !== 7) {
         qQibcErr = "\n -O código hexadecimal deve conter o seguinte padrão: '#F2F2F2' (A-F e 0-9) .";
     }
 
+    ///////////////////////////////// Valida Resposta certa e url correta
+
+    if (qQiac.length < 1 || qQiac.length > 65) {
+        qQiACErr = "\n -Deve haver ao menos uma resposta CERTA";
+    }
+
+    if (!qQiuimgc.startsWith("https://")) {
+        qQiImgErr = "\n -Uma URL válida para a imagem CERTA.";
+    }
+
+    if (!arrqQiai[0].value && !arrqQiai[1].value && !arrqQiai[2].value) {
+        qQiAIErr = "\n -Deve haver ao menos uma resposta ERRADA";
+    }
 
 
+    if (!arrqQiuimgci[0].value.startsWith("https://") && !arrqQiuimgci[1].value.startsWith("https://") && !arrqQiuimgci[2].value.startsWith("https://")) {
+        qQiImgIErr = "\n -Uma URL válida para a imagem ERRADA.";
+    }
 
-    if (qQitErr || qQibcErr) {
-        alert(`O quiz deve ter: ${qQitErr} ${qQibcErr} `)
+    if (qQitErr || qQibcErr || qQiACErr || qQiImgErr || qQiAIErr || qQiImgIErr) {
+        alert(`O quiz deve ter: ${qQitErr} ${qQibcErr} ${qQiACErr} ${qQiImgErr} ${qQiAIErr} ${qQiImgIErr}`)
     }
     else {
-
+        goToQuizzLevel();
     }
     ////////////////////////////////////////////////////////////////////////////
 }
