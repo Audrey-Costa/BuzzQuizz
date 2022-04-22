@@ -90,11 +90,11 @@ function goToQuizzQuestions() {
         </div>
     </div>`
     }
-    document.querySelector(".quizzQuestions").innerHTML += `<button onclick="goToQuizzLevel()" class="button">Prosseguir para Criar Níveis</button>`
+    document.querySelector(".quizzQuestions").innerHTML += `<button onclick="validationQuizQuestions()" class="button">Prosseguir para Criar Níveis</button>`
     document.querySelector(".quizzTheme").classList.add("hide");
     document.querySelector(".quizzQuestions").classList.remove("hide");
 }
-function ValidaQuizQuestions() {
+function validationQuizQuestions() {
     // errors
     let qQitErr = "";
     let qQibcErr = "";
@@ -174,7 +174,7 @@ function ValidaQuizQuestions() {
         alert(`O quiz deve ter: ${qQitErr} ${qQibcErr} `)
     }
     else {
-
+        goToQuizzLevel();
     }
     ////////////////////////////////////////////////////////////////////////////
 }
