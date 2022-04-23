@@ -68,16 +68,16 @@ function goToQuizzQuestions() {
         <div class="answersIncorrect hide">
             <p>Respostas incorretas</p>
             <div>
-                <input class="inputAnswersIncorrect1" type="text" placeholder="Resposta incorreta 1">
-                <input type="text" placeholder="URL da imagem 1">
+                <input  class="inputAnswersIncorrect" type="text" placeholder="Resposta incorreta 1">
+                <input class="inputImgAnswersIncorrect" type="text" placeholder="URL da imagem 1">
             </div>
             <div>
-                <input class="inputAnswersIncorrect2" type="text" placeholder="Resposta incorreta 2">
-                <input type="text" placeholder="URL da imagem 2">
+                <input  class="inputAnswersIncorrect" type="text" placeholder="Resposta incorreta 2">
+                <input class="inputImgAnswersIncorrect" type="text" placeholder="URL da imagem 2">
             </div>
             <div>
-                <input class="inputAnswersIncorrect3" type="text" placeholder="Resposta incorreta 3">
-                <input type="text" placeholder="URL da imagem 3">
+                <input  class="inputAnswersIncorrect" type="text" placeholder="Resposta incorreta 3">
+                <input class="inputImgAnswersIncorrect" type="text" placeholder="URL da imagem 3">
             </div>
         </div>
     </div>`
@@ -342,26 +342,20 @@ let qQiuimgc;     // armazena o vaalor do input da url imagem CORRETA
 let arrqQiai;     // armazena o valor dos inputs das respostas INCORRETAS
 let arrqQiuimgci; // armazena o valor dos inputs das imagens INCORRETAS 
 // resposta e imagem respostas incorretas
-
+*/
 
 
 
 const quizzUserCreated = {
-    id: 1, title: qTit, image: qTiu,
+    id: 1, title: qTit, image: qTiu, //os inputs titulo e tema 
 
     questions: [
 
-        {
-            title: qQit, color: qQibc,
-            answers: [
-                { text: qQiac, image: qQiuimgc, isCorrectAnswer: true },
-                { text: arrqQiai[0].value, image: arrqQiuimgci[0].value, isCorrectAnswer: false }
-            ]
-        },
+
     ], // questions
 
     levels: [
-        { title: qLit, image: qLiu, text: qLd, minValue: qLinA },
+
     ] //levels
 }//fim obj
 
@@ -382,4 +376,38 @@ function error(erro) {
     }
 
 }
-*/
+
+const objectQuestion =
+
+{
+    title: qQit, color: qQibc, answers: [ //inputs do quizQuestion
+
+        {
+            text: qQiac,
+            image: qQiuimgc,
+            isCorrectAnswer: true
+        },
+
+        {
+            text: arrqQiai[0].value,
+            image: arrqQiuimgci[0].value,
+            isCorrectAnswer: false
+        }
+    ]
+};
+
+const objectLevels = { //inputs de quizLevels
+    title: qLit,
+    image: qLiu,
+    text: qLd,
+    minValue: qLinA
+};
+
+quizzUserCreated.questions.objectQuestion.answers[0] //dados da resposta certa
+
+
+quizzUserCreated.questions.objectQuestion.answers[1]// dados da resposta errada
+quizzUserCreated.questions.objectQuestion.answers[2]// dados da resposta errada
+quizzUserCreated.questions.objectQuestion.answers[3]// dados da resposta errada
+
+quizzUserCreated.questions.splice(0, 1, objectQuestion)
