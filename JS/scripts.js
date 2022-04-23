@@ -245,7 +245,7 @@ function goToQuizzLevel() {
         </div>
     </div>`
     }
-    document.querySelector(".quizzLevels").innerHTML += `<button onclick="validationQuizzLevels(this)" class="button">Prosseguir para Criar Níveis</button>`
+    document.querySelector(".quizzLevels").innerHTML += `<button onclick="validationQuizzLevels(this)" class="button">Finalizar Quiz</button>`
     document.querySelector(".quizzQuestions").classList.add("hide");
     document.querySelector(".quizzLevels").classList.remove("hide");
 }
@@ -316,4 +316,75 @@ function goToQuizzCreatedSucess() {
         ${qTit}
     </p>`
     document.querySelector(".quizzCreatedSucess").classList.remove("hide");
+}
+
+
+
+/*
+let qTit;  //qTit armazena o valor do input do título do tema do quiz.
+let qTiu;  //qTiu armazena o valor do input da url do tema do quiz.
+// quizzUserCretedprincipal titulo e image
+
+
+let qTinQ; //qTinQ armazena o valor do input para escolha do número de perguntas.
+// numero de objetos dentro de questions 
+
+let qTinL; //qTinL armazena o valor do input para escolha do número de níveis.
+// numero de objetos dentro de levels
+
+let qLit;  //qLit armazena o valor do input do título do nível.
+let qLinA; //qLina armazena o valor do input para a porcentagem de acertos.
+let qLiu;  //qLiu armazena o valor do input da url do nível.
+let qLd;   //qLd armazena o valor do input que descreve o nível
+//levels
+
+
+let qQit;         // qQit armazena o valor título da pergunta
+//title question
+let qQibc;        // qQibcErr armazena o valor do input para escolha da cor de fundo. 
+//background color
+let qQiac;        // qQiac armazena o valor do input da resposta CORRETA   
+let qQiuimgc;     // armazena o vaalor do input da url imagem CORRETA
+// resposta e imagem respostas corretas
+
+let arrqQiai;     // armazena o valor dos inputs das respostas INCORRETAS
+let arrqQiuimgci; // armazena o valor dos inputs das imagens INCORRETAS 
+// resposta e imagem respostas incorretas
+*/
+
+const quizzUserCreted = {
+    id: 1, title: qTit, image: qTiu,
+
+    questions: [
+
+        {
+            title: qQit, color: qQibc,
+            answers: [
+                { text: qQiac, image: qQiuimgc, isCorrectAnswer: true },
+                { text: arrqQiai[0].value, image: arrqQiuimgci[0].value, isCorrectAnswer: false }
+            ]
+        },
+    ], // questions
+
+    levels: [
+        { title: qLit, image: qLiu, text: qLd, minValue: qLinA },
+    ] //levels
+}//fim obj
+
+const urlPostAPI = "https://mock-api.driven.com.br/api/v6/buzzquizz/quizzes"
+function sendApiObject() {
+
+    const promisse = axios.post(urlPostAPI, quizzUserCreted);
+
+    promisse.then();
+    promisse.catch(error);
+}
+
+
+function error(erro) {
+
+    if (erro === 400) {
+        alert("Este quizz ja foi adicionado")
+    }
+
 }
