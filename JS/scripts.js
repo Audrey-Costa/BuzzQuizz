@@ -54,6 +54,7 @@ function validationQuizzTheme() {
     }
 }
 
+
 function goToQuizzQuestions() {
     for (let i = 1; i < Number(qTinQ); i++) {
         document.querySelector(".quizzQuestions").innerHTML +=
@@ -173,11 +174,8 @@ function validationQuizQuestions() {
         }
     }
 
-<<<<<<< HEAD
     console.log(qQibcFinal)
-=======
     c(qQibcFinal)
->>>>>>> 306328b3a18ae684bb608633d0a17fc7bcf9f5cb
     if (qQibcFinal.length !== 7) {
         qQibcErr = "\n -O código hexadecimal deve conter o seguinte padrão: '#F2F2F2' (A-F e 0-9) .";
     }
