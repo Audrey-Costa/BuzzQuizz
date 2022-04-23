@@ -179,9 +179,8 @@ function validationQuizQuestions() {
 
 
 
-
-    if (qQitErr || qQibcErr) {
-        alert(`O quiz deve ter: ${qQitErr} ${qQibcErr} `)
+    if (qQitErr || qQibcErr || qQiACErr || qQiImgErr || qQiAIErr || qQiImgIErr) {
+        alert(`O quiz deve ter: ${qQitErr} ${qQibcErr} ${qQiACErr} ${qQiImgErr} ${qQiAIErr}  ${qQiImgIErr} `)
     }
     else {
         goToQuizzLevel();
@@ -331,7 +330,9 @@ let arrqQiuimgci; // armazena o valor dos inputs das imagens INCORRETAS
 // resposta e imagem respostas incorretas
 */
 
-const quizzUserCreted = {
+
+
+const quizzUserCreated = {
     id: 1, title: qTit, image: qTiu,
 
     questions: [
@@ -353,7 +354,7 @@ const quizzUserCreted = {
 const urlPostAPI = "https://mock-api.driven.com.br/api/v6/buzzquizz/quizzes"
 function sendApiObject() {
 
-    const promisse = axios.post(urlPostAPI, quizzUserCreted);
+    const promisse = axios.post(urlPostAPI, quizzUserCreated);
 
     promisse.then();
     promisse.catch(error);
