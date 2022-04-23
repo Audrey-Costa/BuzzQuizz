@@ -16,6 +16,7 @@ let qLinA; //qLina armazena o valor do input para a porcentagem de acertos.
 let qLiu;  //qLiu armazena o valor do input da url do nível.
 let qLid;   //qLid armazena o valor do input que descreve o nível
 
+//Verifica se os inputs estão preenchidos corretamente, apresenta um alert em caso negativo e chama a função goToQuizzQuestion.
 function validationQuizzTheme() {
     let qTitErr = "";
     let qTiuErr = "";
@@ -45,7 +46,8 @@ function validationQuizzTheme() {
     }
 }
 
-
+//Carrega a página com a quantidade de questões pedidas pelo usuário e o botão de ir para os níveis.
+//Ao clicar para abrir uma pŕoxima pergunta chama-se a função openInputQuestions(this) passando o elemento como variável.
 function goToQuizzQuestions() {
     for (let i = 1; i < Number(qTinQ); i++) {
         document.querySelector(".quizzQuestions").innerHTML +=
@@ -82,6 +84,7 @@ function goToQuizzQuestions() {
         </div>
     </div>`
     }
+    //Ao clicar no botão chama a função validationQuizzQuestions.
     document.querySelector(".quizzQuestions").innerHTML += `<button onclick="validationQuizQuestions()" class="button">Prosseguir para Criar Níveis</button>`
     document.querySelector(".quizzTheme").classList.add("hide");
     document.querySelector(".quizzQuestions").classList.remove("hide");
@@ -94,6 +97,7 @@ let qQiuimgc;     // armazena o vaalor do input da url imagem correta.
 let arrqQiai;     // armazena o valor dos inputs das respostas INCORRETAS.
 let arrqQiuimgci; // armazena o valor dos inputs das imagens INCORRETAS.
 
+//Verifica se as entradas das perguntas estão preenchidas corretamente.
 function validationQuizQuestions() {
     // errors
     let qQitErr = "";
@@ -205,25 +209,27 @@ function validationQuizQuestions() {
 
 function openInputQuestions(element) {
     let grandfather = element.parentNode.parentNode; //Recebe o elemento "avô" do icone.
-    //aqui precisa entrar a validação da pergunta antes de ir pra proxima pergunta.
+    //Se a validação da pergunta passar fecha a pergunta atual e abre a pergunta clicada.
     if (validationQuizQuestions(element)) {
-
+        //Fecha pergunta atual.
         document.querySelector(".quizzQuestions .show .question").classList.add("hide")
         document.querySelector(".quizzQuestions .show .answerCorrect").classList.add("hide")
         document.querySelector(".quizzQuestions .show .answersIncorrect").classList.add("hide")
         document.querySelector(".quizzQuestions .show img").classList.remove("hide")
         document.querySelector(".quizzQuestions .show").classList.remove("show")
-
+        //Abre próxima pergunta.
         grandfather.classList.add("show")
         grandfather.querySelector("img").classList.add("hide")
         grandfather.querySelector(".question").classList.remove("hide")
         grandfather.querySelector(".answerCorrect").classList.remove("hide")
         grandfather.querySelector(".answersIncorrect").classList.remove("hide")
 
-        //Abre e fecha das perguntas
+        
     }
 }
 
+//Carrega a página com a quantidade de níveis pedidos pelo usuário e o botão de finalizar quizz.
+//Ao clicar para abrir um pŕoximo nível chama-se a função openInputLevel(this) passando o elemento como variável.
 function goToQuizzLevel() {
     for (let i = 1; i < Number(qTinL); i++) {
         document.querySelector(".quizzLevels").innerHTML +=
@@ -240,6 +246,7 @@ function goToQuizzLevel() {
         </div>
     </div>`
     }
+    //Ao clicar no botão chama a função validationQuizzQuestions.
     document.querySelector(".quizzLevels").innerHTML += `<button onclick="validationQuizzLevels(this)" class="button">Finalizar Quiz</button>`
     document.querySelector(".quizzQuestions").classList.add("hide");
     document.querySelector(".quizzLevels").classList.remove("hide");
@@ -247,11 +254,13 @@ function goToQuizzLevel() {
 
 function openInputLevel(element) {
     let grandfather = element.parentNode.parentNode; //Recebe o elemento "avô" do icone.
+    //Se a validação do nível passar fecha o nível atual e abre o nível clicado.
     if (validationQuizzLevels(element)) {
-        //Abre e fecha dos níveis.
+        //Fecha nível atual.
         document.querySelector(".quizzLevels .show .level").classList.add("hide")
         document.querySelector(".quizzLevels .show img").classList.remove("hide")
         document.querySelector(".quizzLevels .show").classList.remove("show")
+        //Abre o próximo nível.
         grandfather.classList.add("show")
         grandfather.querySelector("img").classList.add("hide")
         grandfather.querySelector(".level").classList.remove("hide")
@@ -261,6 +270,7 @@ function openInputLevel(element) {
 
 let percent = 1;
 
+//Verifica se as entradas dos níveis estão preenchidos corretamente.
 function validationQuizzLevels(element) {
     let qLitErr = "";
     let qLinAErr = "";
@@ -295,23 +305,28 @@ function validationQuizzLevels(element) {
         percent = 1;
         return false;
     } else {
+        //Verifica se o elemento clicado é o botão de finalizar quizz. Se sim chama a função goToquizzCreatedSucess
         if (element.classList.contains("button")) {
+            //Adiciona os valores do input ao objeto level.
             level = {
                 title: qLit,
                 image: qLiu,
                 text: qLid,
                 minValue: Number(qLinA)
             }
+            //Adiciona o objeto level à Array Levels
             levelNumber = document.querySelector(".quizzLevels .show p").innerText
             Levels.splice(levelNumber[levelNumber.length - 1] - 1, 1, level)
             goToQuizzCreatedSucess()
         } else {
+            //Adiciona os valores do input ao objeto level.
             level = {
                 title: qLit,
                 image: qLiu,
                 text: qLid,
                 minValue: Number(qLinA)
             }
+            //Adiciona o objeto level à Array Levels
             levelNumber = document.querySelector(".quizzLevels .show p").innerText
             Levels.splice(levelNumber[levelNumber.length - 1] - 1, 1, level)
             return true;
@@ -319,6 +334,7 @@ function validationQuizzLevels(element) {
     }
 }
 
+//Carrega a página pós criação do quizz, e cria o objeto final (quizz) que recebe os parâmetros dos inputs do tema e as listas Questions e Levels. 
 function goToQuizzCreatedSucess() {
     quizz = {
         id: 1,
