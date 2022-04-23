@@ -14,7 +14,7 @@ let qTinL; //qTinL armazena o valor do input para escolha do número de níveis.
 let qLit;  //qLit armazena o valor do input do título do nível.
 let qLinA; //qLina armazena o valor do input para a porcentagem de acertos.
 let qLiu;  //qLiu armazena o valor do input da url do nível.
-let qLd;   //qLd armazena o valor do input que descreve o nível
+let qLid;   //qLid armazena o valor do input que descreve o nível
 
 function validationQuizzTheme() {
     let qTitErr = "";
@@ -262,13 +262,13 @@ function validationQuizzLevels(element) {
     let qLitErr = "";
     let qLinAErr = "";
     let qLiuErr = "";
-    let qLdErr = "";
+    let qLidErr = "";
     let percentErr = "";
     c(element.classList.contains("button"))
     qLit = document.querySelector(".quizzLevels .show .text").value;
     qLinA = document.querySelector(".quizzLevels .show .percent").value;
     qLiu = document.querySelector(".quizzLevels .show .url").value;
-    qLd = document.querySelector(".quizzLevels .show .description").value;
+    qLid = document.querySelector(".quizzLevels .show .description").value;
     if (qLit.length < 10) {
         qLitErr = "\n -Um título com no mínimo 10 caracteres.";
     }
@@ -281,27 +281,49 @@ function validationQuizzLevels(element) {
     if (!qLiu.startsWith("https://")) {
         qLiuErr = "\n -Uma URL válida para a imagem.";
     }
-    if (qLd.length < 30) {
-        qLdErr = "\n -No mínimo 30 caracteres na descrição.";
+    if (qLid.length < 30) {
+        qLidErr = "\n -No mínimo 30 caracteres na descrição.";
     }
     if (percent !== 0) {
         percentErr = "\n -Pelo menos um nível para 0 acertos."
     }
-    if (qLitErr || qLinAErr || qLiuErr || qLdErr || percentErr) {
-        alert(`O nível deve ter: ${qLitErr}${qLinAErr}${qLiuErr}${qLdErr}${percentErr}`);
+    if (qLitErr || qLinAErr || qLiuErr || qLidErr || percentErr) {
+        alert(`O nível deve ter: ${qLitErr}${qLinAErr}${qLiuErr}${qLidErr}${percentErr}`);
         percent = 1;
         return false;
     } else {
         if (element.classList.contains("button")) {
+            level = {
+                title: qLit,
+                image: qLiu,
+                text: qLid,
+                minValue: Number(qLinA)
+            }
+            levelNumber = document.querySelector(".quizzLevels .show p").innerText
+            Levels.splice(levelNumber[levelNumber.length - 1] - 1, 1, level)
             goToQuizzCreatedSucess()
         } else {
+            level = {
+                title: qLit,
+                image: qLiu,
+                text: qLid,
+                minValue: Number(qLinA)
+            }
+            levelNumber = document.querySelector(".quizzLevels .show p").innerText
+            Levels.splice(levelNumber[levelNumber.length - 1] - 1, 1, level)
             return true;
-            c("foi")
         }
     }
 }
 
 function goToQuizzCreatedSucess() {
+    quizz = 	{
+        id: 1,
+        title: qTit,
+        image: qTiu,
+        questions: Questions,
+        levels: Levels
+    }
     document.querySelector(".quizzLevels").classList.add("hide");
     document.querySelector(".quizzCreatedSucess .imgQuizzCreatedSucess").innerHTML = `<img src="${qTiu}" alt="Não foi possível carregar a imagem, use uma url de imagem.">
     <p>
@@ -327,7 +349,7 @@ let qTinL; //qTinL armazena o valor do input para escolha do número de níveis.
 let qLit;  //qLit armazena o valor do input do título do nível.
 let qLinA; //qLina armazena o valor do input para a porcentagem de acertos.
 let qLiu;  //qLiu armazena o valor do input da url do nível.
-let qLd;   //qLd armazena o valor do input que descreve o nível
+let qLid;   //qLid armazena o valor do input que descreve o nível
 //levels
 
 
@@ -361,7 +383,7 @@ const quizzUserCreated = {
     ], // questions
 
     levels: [
-        { title: qLit, image: qLiu, text: qLd, minValue: qLinA },
+        { title: qLit, image: qLiu, text: qLid, minValue: qLinA },
     ] //levels
 }//fim obj
 
@@ -383,3 +405,26 @@ function error(erro) {
 
 }
 */
+
+let answers = []
+
+let question = 	{
+	title: qQit,
+	color: qQibc,
+	answers: answers
+}
+
+let Questions = []
+
+let level = {
+    title: qLit,
+    image: qLiu,
+    text: qLid,
+    minValue: qLinA
+}
+
+let Levels = []
+
+let quizz;
+
+let levelNumber;
