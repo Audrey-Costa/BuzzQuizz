@@ -171,16 +171,30 @@ function validationQuizQuestions() {
         }
     }
 
-    console.log(qQibcFinal)
-    c(qQibcFinal)
+
+    c(arrqQiai)
     if (qQibcFinal.length !== 7) {
         qQibcErr = "\n -O código hexadecimal deve conter o seguinte padrão: '#F2F2F2' (A-F e 0-9) .";
     }
+    if (qQiac.length < 1 || qQiac.length > 65) {
+        qQiACErr = "\n -Deve haver ao menos uma resposta CERTA";
+    }
+
+    if (!qQiuimgc.startsWith("https://")) {
+        qQiImgErr = "\n -Uma URL válida para a imagem CERTA.";
+    }
+
+    if (!arrqQiai[0].value && !arrqQiai[1].value && !arrqQiai[2].value) {
+        qQiAIErr = "\n -Deve haver ao menos uma resposta ERRADA";
+    }
 
 
+    if (!arrqQiuimgci[0].value.startsWith("https://") && !arrqQiuimgci[1].value.startsWith("https://") && !arrqQiuimgci[2].value.startsWith("https://")) {
+        qQiImgIErr = "\n -Uma URL válida para a imagem ERRADA.";
+    }
 
     if (qQitErr || qQibcErr || qQiACErr || qQiImgErr || qQiAIErr || qQiImgIErr) {
-        alert(`O quiz deve ter: ${qQitErr} ${qQibcErr} ${qQiACErr} ${qQiImgErr} ${qQiAIErr}  ${qQiImgIErr} `)
+        alert(`O quiz deve ter: ${qQitErr} ${qQibcErr} ${qQiACErr} ${qQiImgErr} ${qQiAIErr} ${qQiImgIErr}`)
     }
     else {
         goToQuizzLevel();
@@ -328,7 +342,7 @@ let qQiuimgc;     // armazena o vaalor do input da url imagem CORRETA
 let arrqQiai;     // armazena o valor dos inputs das respostas INCORRETAS
 let arrqQiuimgci; // armazena o valor dos inputs das imagens INCORRETAS 
 // resposta e imagem respostas incorretas
-*/
+
 
 
 
@@ -368,3 +382,4 @@ function error(erro) {
     }
 
 }
+*/
