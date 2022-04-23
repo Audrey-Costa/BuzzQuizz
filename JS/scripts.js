@@ -1,17 +1,8 @@
+//Carrega a página do tema do quizz.
 function goToQuizzCreator() {
     document.querySelector(".home").classList.add("hide")
     document.querySelector(".quizzCreator").classList.remove("hide")
 }
-
-
-let qQit;    // qQit armazena o valor título do tema quiz
-let qQibc;   // qQibcErr armazena o valor do input para escolha da cor de fundo. 
-let qQiac;   // qQiac armazena o valor do input da resposta correta   
-let qQiuimgc;// armazena o vaalor do input da url imagem correta
-let qQiai1;  // armazena o valor do input da resposta incorreta 1
-let qQiai2;  // armazena o valor do input da resposta incorreta 2
-let qQiai3;  // armazena o valor do input da resposta incorreta 3
-
 
 
 let c = console.log.bind(document);
@@ -95,24 +86,30 @@ function goToQuizzQuestions() {
     document.querySelector(".quizzTheme").classList.add("hide");
     document.querySelector(".quizzQuestions").classList.remove("hide");
 }
+
+let qQit;         // qQit armazena o valor título do tema quiz.
+let qQibc;        // qQibcErr armazena o valor do input para escolha da cor de fundo. 
+let qQiac;        // qQiac armazena o valor do input da resposta correta.   
+let qQiuimgc;     // armazena o vaalor do input da url imagem correta.
+let arrqQiai;     // armazena o valor dos inputs das respostas INCORRETAS.
+let arrqQiuimgci; // armazena o valor dos inputs das imagens INCORRETAS.
+
 function validationQuizQuestions() {
     // errors
     let qQitErr = "";
     let qQibcErr = "";
     let qQiACErr = "";
     let qQiImgErr = "";
-    let qQiAI1Err = "";
-    let qQiAI2Err = "";
-    let qQiAI3Err = "";
+    let qQiAIErr = "";
+    let qQiImgIErr = "";
 
     //inputs values 
     qQit = document.querySelector(".inputTextQuestion").value
     qQibc = document.querySelector(".inputBackgroundColorQuestion").value.toLowerCase()
     qQiac = document.querySelector(".inputAnswerCorrect").value
     qQiuimgc = document.querySelector(".inputUrlImageAnswerCorrect").value
-    qQiai1 = document.querySelector(".inputAnswersIncorrect1").value
-    qQiai2 = document.querySelector(".inputAnswersIncorrect2").value
-    qQiai3 = document.querySelector(".inputAnswersIncorrect3").value
+    arrqQiai = document.querySelectorAll(".inputAnswersIncorrect")
+    arrqQiuimgci = document.querySelectorAll(".inputImgAnswersIncorrect")
 
 
 
