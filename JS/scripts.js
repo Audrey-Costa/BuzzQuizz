@@ -384,6 +384,14 @@ function goToQuizzCreatedSucess() {
 
 
 
+function backToHome() {
+    document.querySelector(".quizzCreatedSucess").classList.add("hide");
+    document.querySelector(".home").classList.remove("hide");
+}
+
+
+
+
 /*
 let qTit;  //qTit armazena o valor do input do título do tema do quiz.
 let qTiu;  //qTiu armazena o valor do input da url do tema do quiz.
