@@ -115,13 +115,37 @@ header {
 .userQuizz {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+
 }
 
-.userQuizz div {
+.addUserQuizz {
     display: flex;
-    justify-content: flex-start;
     align-items: center;
 }
+
+
+.quizzes {
+    margin-top: 14px;
+    background-color: red;
+}
+
+.quizList img {
+    height: 270px;
+    width: 500px;
+    border-radius: 5px;
+    margin: 46px 0 5px 0;
+}
+
+.quizList p {
+    position: relative;
+    bottom: 50px;
+    left: 23px;
+    color: #FFFFFF;
+    font-weight: 400;
+}
+
 
 .userQuizz p,
 .otherquizz p {
@@ -291,11 +315,11 @@ header {
     }
 
     .addUserQuizz {
+        width: 100%;
         display: flex;
         justify-content: space-between;
-        align-items: center;
-        background-color: red;
-
+        align-items: center
     }
+
 
 }

@@ -1,3 +1,9 @@
+
+
+serverContactGet()
+
+
+
 //Carrega a página do tema do quizz.
 function goToQuizzCreator() {
     document.querySelector(".home").classList.add("hide")
@@ -228,12 +234,12 @@ function validationQuizQuestions(element) {
             image: arrqQiuimgci[2].value,
             isCorrectAnswer: false
         }]
-        let count = 1; 
-        for (let i = 0; i < arrqQiai.length; i++){
+        let count = 1;
+        for (let i = 0; i < arrqQiai.length; i++) {
 
-            if (arrqQiai[i].value === ""){
+            if (arrqQiai[i].value === "") {
                 answers.splice(i + count, 1)
-                count --;
+                count--;
             }
         }
         //Verifica se o elemento clicado é o botão de finalizar quizz. Se sim chama a função goToquizzLevel
@@ -291,7 +297,7 @@ function openInputQuestions(element) {
 //Carrega a página com a quantidade de níveis pedidos pelo usuário e o botão de finalizar quizz.
 //Ao clicar para abrir um pŕoximo nível chama-se a função openInputLevel(this) passando o elemento como variável.
 function goToQuizzLevel() {
-    if (questions.length === Number(qTinQ)){
+    if (questions.length === Number(qTinQ)) {
         for (let i = 1; i < Number(qTinL); i++) {
             document.querySelector(".quizzLevels").innerHTML +=
                 `<div class="inputs">
@@ -311,7 +317,7 @@ function goToQuizzLevel() {
         document.querySelector(".quizzLevels").innerHTML += `<button onclick="validationQuizzLevels(this)" class="button">Finalizar Quiz</button>`
         document.querySelector(".quizzQuestions").classList.add("hide");
         document.querySelector(".quizzLevels").classList.remove("hide");
-    }else{
+    } else {
         alert("Por favor preencha todas as perguntas.")
     }
 }
@@ -400,9 +406,9 @@ function validationQuizzLevels(element) {
 
 //Carrega a página pós criação do quizz, e cria o objeto final (quizz) que recebe os parâmetros dos inputs do tema e as listas Questions e Levels. 
 function goToQuizzCreatedSucess() {
-    if (levels.length === Number(qTinL)){
-        for (let i = 0; i < levels.length; i++){
-            if (levels[i].minValue === 0){
+    if (levels.length === Number(qTinL)) {
+        for (let i = 0; i < levels.length; i++) {
+            if (levels[i].minValue === 0) {
                 quizz = {
                     title: qTit,
                     image: qTiu,
@@ -422,7 +428,7 @@ function goToQuizzCreatedSucess() {
         }
         alert("É obrigatório existir pelo menos 1 nível cuja % de acerto mínima seja 0%")
 
-    }else{
+    } else {
         alert("Por favor preencha todos os níveis")
     }
 
@@ -540,3 +546,30 @@ let levels = []
 let quizz;
 
 let levelNumber;
+
+
+function serverContactGet() {
+    const urlGetAPI = "https://mock-api.driven.com.br/api/v6/buzzquizz/quizzes";
+    const promisse = axios.get(urlGetAPI);
+    promisse.then(loadQuizz)
+    promisse.then(error)
+}
+let responseQuizz = []
+function loadQuizz(response) {
+    responseQuizz = response.data;
+
+    c(responseQuizz)
+    renderQuizzes()
+}
+
+function renderQuizzes() {
+
+    const ul = document.querySelector(".quizList");
+    ul.innerHTML = "";
+    for (let i = 0; i < responseQuizz.length; i++) {
+        ul.innerHTML += `<li><img src='${responseQuizz[i].image}'alt="Não foi possível carregar a imagem, use uma url de imagem."><p>${responseQuizz[i].title}</p></li>`
+    }
+
+
+
+}
