@@ -124,7 +124,7 @@ header {
 }
 
 .userQuizz p,
-.otherquizz p {
+.otherQuizz p {
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 700;
@@ -144,6 +144,49 @@ header {
 
 .userQuizz .quizzes {
     margin-bottom: 15px;
+}
+.otherQuizz .quizzes{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.otherQuizz .quizzes .quizz{
+    position: relative;
+    width: 340px;
+    height: 180px;
+    margin: 12px;
+}
+
+.otherQuizz .quizzes .quizz img{
+    width: 340px;
+    height: 180px;
+    background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,1));
+}
+
+.otherQuizz .quizzes .quizz p{
+    position: absolute;
+    z-index: 2;
+    left: 16px;
+    bottom: 10px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 22px;
+    display: flex;
+    align-items: center;
+    color: #FFFFFF;
+    ;
+}
+
+.otherQuizz .quizzes .quizz .degrade{
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    z-index: 1;
+    width: 340px;
+    height: 180px;
+    background-image: linear-gradient(rgba(255,255,255,0.05), rgba(0,0,0,1));
 }
 
 .quizzTheme,
