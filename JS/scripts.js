@@ -106,6 +106,7 @@ function validationQuizQuestions(element) {
     let qQiImgErr = "";
     let qQiAIErr = "";
     let qQiImgIErr = "";
+    let qQiAIImgErr = "";
 
     //inputs values 
     qQit = document.querySelector("    .quizzQuestions .show .inputTextQuestion").value
@@ -192,13 +193,18 @@ function validationQuizQuestions(element) {
         qQiAIErr = "\n -Deve haver ao menos uma resposta ERRADA";
     }
 
-
+    // se o começo do index de array for diferente de https://, ele retorna true e cai no if 
     if (!arrqQiuimgci[0].value.startsWith("https://") && !arrqQiuimgci[1].value.startsWith("https://") && !arrqQiuimgci[2].value.startsWith("https://")) {
         qQiImgIErr = "\n -Uma URL válida para a imagem ERRADA.";
     }
 
-    if (qQitErr || qQibcErr || qQiACErr || qQiImgErr || qQiAIErr || qQiImgIErr) {
-        alert(`O quiz deve ter: ${qQitErr} ${qQibcErr} ${qQiACErr} ${qQiImgErr} ${qQiAIErr} ${qQiImgIErr}`)
+    // se o título for tiver valor e a url não tiver, ele irá entrar no if
+    if (!!arrqQiai[0].value && !arrqQiuimgci[0].value || !!arrqQiai[1].value && !arrqQiuimgci[1].value || !!arrqQiai[2].value && !arrqQiuimgci[2].value) {
+        qQiAIImgErr = "\n -As respostas devem ter seus respectivos títulos e imagens";
+    }
+
+    if (qQitErr || qQibcErr || qQiACErr || qQiImgErr || qQiAIErr || qQiImgIErr || qQiAIImgErr) {
+        alert(`O quiz deve ter: ${qQitErr} ${qQibcErr} ${qQiACErr} ${qQiImgErr} ${qQiAIErr} ${qQiImgIErr}  ${qQiAIImgErr}`)
         return false;
     }
     else {
@@ -270,7 +276,7 @@ function openInputQuestions(element) {
         grandfather.querySelector(".answerCorrect").classList.remove("hide")
         grandfather.querySelector(".answersIncorrect").classList.remove("hide")
 
-        
+
     }
 }
 
@@ -503,7 +509,7 @@ let questions = []
 
 let question;
 
-let level ;
+let level;
 
 let levels = []
 

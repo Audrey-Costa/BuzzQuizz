@@ -1,5 +1,13 @@
+* {
+    box-sizing: border-box;
+}
+
+
 body {
     font-family: 'Roboto', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 h1 {
@@ -32,6 +40,9 @@ p {
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100%;
+    width: 100%;
+    max-width: 1100px;
 }
 
 header {
@@ -49,7 +60,7 @@ header {
 
 .userQuizzEmpity {
     width: 1050px;
-    height: 180px;
+    height: 181px;
     margin: 80px 0;
     border: 1px dashed #D5D5D5;
     display: flex;
@@ -96,6 +107,10 @@ header {
     align-items: center;
     color: #EC362D;
 }
+
+
+
+
 
 .userQuizz {
     display: flex;
@@ -258,4 +273,29 @@ header {
 
 .hide {
     display: none;
+}
+
+
+
+/*
+
+
+=== MOBILE CONFIGS -1100PX ===
+
+*/
+@media (max-width: 1100px) {
+    .userQuizzEmpity {
+        width: 340px;
+        height: 181px;
+
+    }
+
+    .addUserQuizz {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: red;
+
+    }
+
 }
