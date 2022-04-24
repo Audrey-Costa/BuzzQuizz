@@ -85,7 +85,7 @@ function goToQuizzQuestions() {
     </div>`
     }
     //Ao clicar no botão chama a função validationQuizzQuestions.
-    document.querySelector(".quizzQuestions").innerHTML += `<button onclick="validationQuizQuestions()" class="button">Prosseguir para Criar Níveis</button>`
+    document.querySelector(".quizzQuestions").innerHTML += `<button onclick="validationQuizQuestions(this)" class="button">Prosseguir para Criar Níveis</button>`
     document.querySelector(".quizzTheme").classList.add("hide");
     document.querySelector(".quizzQuestions").classList.remove("hide");
 }
@@ -98,7 +98,7 @@ let arrqQiai;     // armazena o valor dos inputs das respostas INCORRETAS.
 let arrqQiuimgci; // armazena o valor dos inputs das imagens INCORRETAS.
 
 //Verifica se as entradas das perguntas estão preenchidas corretamente.
-function validationQuizQuestions() {
+function validationQuizQuestions(element) {
     // errors
     let qQitErr = "";
     let qQibcErr = "";
@@ -108,12 +108,12 @@ function validationQuizQuestions() {
     let qQiImgIErr = "";
 
     //inputs values 
-    qQit = document.querySelector(".inputTextQuestion").value
-    qQibc = document.querySelector(".inputBackgroundColorQuestion").value.toLowerCase()
-    qQiac = document.querySelector(".inputAnswerCorrect").value
-    qQiuimgc = document.querySelector(".inputUrlImageAnswerCorrect").value
-    arrqQiai = document.querySelectorAll(".inputAnswersIncorrect")
-    arrqQiuimgci = document.querySelectorAll(".inputImgAnswersIncorrect")
+    qQit = document.querySelector("    .quizzQuestions .show .inputTextQuestion").value
+    qQibc = document.querySelector(".quizzQuestions .show .inputBackgroundColorQuestion").value.toLowerCase()
+    qQiac = document.querySelector(".quizzQuestions .show .inputAnswerCorrect").value
+    qQiuimgc = document.querySelector(".quizzQuestions .show .inputUrlImageAnswerCorrect").value
+    arrqQiai = document.querySelectorAll(".quizzQuestions .show .inputAnswersIncorrect")
+    arrqQiuimgci = document.querySelectorAll(".quizzQuestions .show .inputImgAnswersIncorrect")
 
 
 
@@ -176,7 +176,7 @@ function validationQuizQuestions() {
     }
 
 
-    c(arrqQiai)
+
     if (qQibcFinal.length !== 7) {
         qQibcErr = "\n -O código hexadecimal deve conter o seguinte padrão: '#F2F2F2' (A-F e 0-9) .";
     }
@@ -202,7 +202,53 @@ function validationQuizQuestions() {
         return false;
     }
     else {
-        goToQuizzLevel();
+        answers = [{
+            text: qQiac,
+            image: qQiuimgc,
+            isCorrectAnswer: true
+        },
+        {
+            text: arrqQiai[0].value,
+            image: arrqQiuimgci[0].value,
+            isCorrectAnswer: false
+        },
+        {
+            text: arrqQiai[1].value,
+            image: arrqQiuimgci[1].value,
+            isCorrectAnswer: false
+        },
+        {
+            text: arrqQiai[2].value,
+            image: arrqQiuimgci[2].value,
+            isCorrectAnswer: false
+        }]
+        if (element.classList.contains("button")) {
+
+            question = {
+                title: qQit,
+                color: qQibc,
+                answers: answers
+            }
+
+            questionNumber = document.querySelector(".quizzQuestions .show p").innerText
+            questions.splice(questionNumber[questionNumber.length - 1] - 1, 1, question)
+            c(quizz)
+            goToQuizzLevel();
+        } else {
+            question = {
+                title: qQit,
+                color: qQibc,
+                answers: answers
+
+            }
+
+            questionNumber = document.querySelector(".quizzQuestions .show p").innerText
+            questions.splice(questionNumber[questionNumber.length - 1] - 1, 1, question)
+            c(quizz)
+            return true;
+        }
+
+
     }
     ////////////////////////////////////////////////////////////////////////////
 }
@@ -316,7 +362,7 @@ function validationQuizzLevels(element) {
             }
             //Adiciona o objeto level à Array Levels
             levelNumber = document.querySelector(".quizzLevels .show p").innerText
-            Levels.splice(levelNumber[levelNumber.length - 1] - 1, 1, level)
+            levels.splice(levelNumber[levelNumber.length - 1] - 1, 1, level)
             goToQuizzCreatedSucess()
         } else {
             //Adiciona os valores do input ao objeto level.
@@ -328,7 +374,7 @@ function validationQuizzLevels(element) {
             }
             //Adiciona o objeto level à Array Levels
             levelNumber = document.querySelector(".quizzLevels .show p").innerText
-            Levels.splice(levelNumber[levelNumber.length - 1] - 1, 1, level)
+            levels.splice(levelNumber[levelNumber.length - 1] - 1, 1, level)
             return true;
         }
     }
@@ -337,12 +383,13 @@ function validationQuizzLevels(element) {
 //Carrega a página pós criação do quizz, e cria o objeto final (quizz) que recebe os parâmetros dos inputs do tema e as listas Questions e Levels. 
 function goToQuizzCreatedSucess() {
     quizz = {
-        id: 1,
         title: qTit,
         image: qTiu,
-        questions: Questions,
-        levels: Levels
+        questions: questions,
+        levels: level
     }
+    sendApiObject()
+    c(quizz)
     document.querySelector(".quizzLevels").classList.add("hide");
     document.querySelector(".quizzCreatedSucess .imgQuizzCreatedSucess").innerHTML = `<img src="${qTiu}" alt="Não foi possível carregar a imagem, use uma url de imagem.">
     <p>
@@ -387,25 +434,14 @@ let arrqQiuimgci; // armazena o valor dos inputs das imagens INCORRETAS
 
 
 
-const quizzUserCreated = {
-    id: 1, title: qTit, image: qTiu, //os inputs titulo e tema 
 
-    questions: [
-
-
-    ], // questions
-
-    levels: [
-        { title: qLit, image: qLiu, text: qLid, minValue: qLinA },
-    ] //levels
-}//fim obj
 
 const urlPostAPI = "https://mock-api.driven.com.br/api/v6/buzzquizz/quizzes"
 function sendApiObject() {
 
-    const promisse = axios.post(urlPostAPI, quizzUserCreated);
-
-    promisse.then();
+    const promisse = axios.post(urlPostAPI, quizz);
+    c(quizz)
+    promisse.then(c(promisse));
     promisse.catch(error);
 }
 
@@ -418,7 +454,7 @@ function error(erro) {
 
 }
 /*
-const objectQuestion =
+const question =
 
 {
     title: qQit, color: qQibc, answers: [ //inputs do quizQuestion
@@ -454,24 +490,14 @@ quizzUserCreated.questions.objectQuestion.answers[3]// dados da resposta errada
 quizzUserCreated.questions.splice(0, 1, objectQuestion)
 */
 
-let answers = []
+// Questions -> question -> answers -> correct and incorrect data
+let questions = []
 
-let question = {
-    title: qQit,
-    color: qQibc,
-    answers: answers
-}
+let question;
 
-let Questions = []
+let level ;
 
-let level = {
-    title: qLit,
-    image: qLiu,
-    text: qLid,
-    minValue: qLinA
-}
-
-let Levels = []
+let levels = []
 
 let quizz;
 
