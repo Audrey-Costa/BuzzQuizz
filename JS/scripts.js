@@ -14,7 +14,7 @@ let qTinL; //qTinL armazena o valor do input para escolha do número de níveis.
 let qLit;  //qLit armazena o valor do input do título do nível.
 let qLinA; //qLina armazena o valor do input para a porcentagem de acertos.
 let qLiu;  //qLiu armazena o valor do input da url do nível.
-let qLid;   //qLid armazena o valor do input que descreve o nível
+let qLid;  //qLid armazena o valor do input que descreve o nível.
 
 //Verifica se os inputs estão preenchidos corretamente, apresenta um alert em caso negativo e chama a função goToQuizzQuestion.
 function validationQuizzTheme() {
@@ -228,8 +228,16 @@ function validationQuizQuestions(element) {
             image: arrqQiuimgci[2].value,
             isCorrectAnswer: false
         }]
-        if (element.classList.contains("button")) {
+        let count = 1; 
+        for (let i = 0; i < arrqQiai.length; i++){
 
+            if (arrqQiai[i].value === ""){
+                answers.splice(i + count, 1)
+                count --;
+            }
+        }
+        //Verifica se o elemento clicado é o botão de finalizar quizz. Se sim chama a função goToquizzLevel
+        if (element.classList.contains("button")) {
             question = {
                 title: qQit,
                 color: qQibc,
@@ -283,25 +291,29 @@ function openInputQuestions(element) {
 //Carrega a página com a quantidade de níveis pedidos pelo usuário e o botão de finalizar quizz.
 //Ao clicar para abrir um pŕoximo nível chama-se a função openInputLevel(this) passando o elemento como variável.
 function goToQuizzLevel() {
-    for (let i = 1; i < Number(qTinL); i++) {
-        document.querySelector(".quizzLevels").innerHTML +=
-            `<div class="inputs">
-        <div class="option">
-            <p>Nível ${i + 1}</p>
-            <img src="Img/Vector.svg" onclick="openInputLevel(this)" class="">
-        </div>
-        <div class="level hide">
-            <input class="text" type="text" placeholder="Título do nível">
-            <input class="percent" type="number" placeholder="% de acerto míníma">
-            <input class="url" type="url" placeholder="URL da imagem do nível">
-            <input class="description" type="text" placeholder="Descrição do nível">
-        </div>
-    </div>`
+    if (questions.length === Number(qTinQ)){
+        for (let i = 1; i < Number(qTinL); i++) {
+            document.querySelector(".quizzLevels").innerHTML +=
+                `<div class="inputs">
+            <div class="option">
+                <p>Nível ${i + 1}</p>
+                <img src="Img/Vector.svg" onclick="openInputLevel(this)" class="">
+            </div>
+            <div class="level hide">
+                <input class="text" type="text" placeholder="Título do nível">
+                <input class="percent" type="number" placeholder="% de acerto míníma">
+                <input class="url" type="url" placeholder="URL da imagem do nível">
+                <input class="description" type="text" placeholder="Descrição do nível">
+            </div>
+        </div>`
+        }
+        //Ao clicar no botão chama a função validationQuizzQuestions.
+        document.querySelector(".quizzLevels").innerHTML += `<button onclick="validationQuizzLevels(this)" class="button">Finalizar Quiz</button>`
+        document.querySelector(".quizzQuestions").classList.add("hide");
+        document.querySelector(".quizzLevels").classList.remove("hide");
+    }else{
+        alert("Por favor preencha todas as perguntas.")
     }
-    //Ao clicar no botão chama a função validationQuizzQuestions.
-    document.querySelector(".quizzLevels").innerHTML += `<button onclick="validationQuizzLevels(this)" class="button">Finalizar Quiz</button>`
-    document.querySelector(".quizzQuestions").classList.add("hide");
-    document.querySelector(".quizzLevels").classList.remove("hide");
 }
 
 function openInputLevel(element) {
@@ -388,20 +400,32 @@ function validationQuizzLevels(element) {
 
 //Carrega a página pós criação do quizz, e cria o objeto final (quizz) que recebe os parâmetros dos inputs do tema e as listas Questions e Levels. 
 function goToQuizzCreatedSucess() {
-    quizz = {
-        title: qTit,
-        image: qTiu,
-        questions: questions,
-        levels: level
+    if (levels.length === Number(qTinL)){
+        for (let i = 0; i < levels.length; i++){
+            if (levels[i].minValue === 0){
+                quizz = {
+                    title: qTit,
+                    image: qTiu,
+                    questions: questions,
+                    levels: levels
+                }
+                sendApiObject()
+                c(quizz)
+                document.querySelector(".quizzLevels").classList.add("hide");
+                document.querySelector(".quizzCreatedSucess .imgQuizzCreatedSucess").innerHTML = `<img src="${qTiu}" alt="Não foi possível carregar a imagem, use uma url de imagem.">
+                <p>
+                    ${qTit}
+                </p>`
+                document.querySelector(".quizzCreatedSucess").classList.remove("hide");
+                return
+            }
+        }
+        alert("É obrigatório existir pelo menos 1 nível cuja % de acerto mínima seja 0%")
+
+    }else{
+        alert("Por favor preencha todos os níveis")
     }
-    sendApiObject()
-    c(quizz)
-    document.querySelector(".quizzLevels").classList.add("hide");
-    document.querySelector(".quizzCreatedSucess .imgQuizzCreatedSucess").innerHTML = `<img src="${qTiu}" alt="Não foi possível carregar a imagem, use uma url de imagem.">
-    <p>
-        ${qTit}
-    </p>`
-    document.querySelector(".quizzCreatedSucess").classList.remove("hide");
+
 }
 
 
