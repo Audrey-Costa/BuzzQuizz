@@ -1,17 +1,10 @@
-
-
-serverContactGet()
-
-
+//let c = console.log.bind(document);
 
 //Carrega a página do tema do quizz.
 function goToQuizzCreator() {
     document.querySelector(".home").classList.add("hide")
     document.querySelector(".quizzCreator").classList.remove("hide")
 }
-
-
-let c = console.log.bind(document);
 
 let qTit;  //qTit armazena o valor do input do título do tema do quiz.
 let qTiu;  //qTiu armazena o valor do input da url do tema do quiz.
@@ -252,7 +245,6 @@ function validationQuizQuestions(element) {
 
             questionNumber = document.querySelector(".quizzQuestions .show p").innerText
             questions.splice(questionNumber[questionNumber.length - 1] - 1, 1, question)
-            c(quizz)
             goToQuizzLevel();
         } else {
             question = {
@@ -264,7 +256,6 @@ function validationQuizQuestions(element) {
 
             questionNumber = document.querySelector(".quizzQuestions .show p").innerText
             questions.splice(questionNumber[questionNumber.length - 1] - 1, 1, question)
-            c(quizz)
             return true;
         }
 
@@ -347,7 +338,6 @@ function validationQuizzLevels(element) {
     let qLiuErr = "";
     let qLidErr = "";
     let percentErr = "";
-    c(element.classList.contains("button"))
     qLit = document.querySelector(".quizzLevels .show .text").value;
     qLinA = document.querySelector(".quizzLevels .show .percent").value;
     qLiu = document.querySelector(".quizzLevels .show .url").value;
@@ -416,7 +406,6 @@ function goToQuizzCreatedSucess() {
                     levels: levels
                 }
                 sendApiObject()
-                c(quizz)
                 document.querySelector(".quizzLevels").classList.add("hide");
                 document.querySelector(".quizzCreatedSucess .imgQuizzCreatedSucess").innerHTML = `<img src="${qTiu}" alt="Não foi possível carregar a imagem, use uma url de imagem.">
                 <p>
@@ -484,7 +473,6 @@ const urlPostAPI = "https://mock-api.driven.com.br/api/v6/buzzquizz/quizzes"
 function sendApiObject() {
 
     const promisse = axios.post(urlPostAPI, quizz);
-    c(quizz)
     promisse.then(c(promisse));
     promisse.catch(error);
 }
@@ -547,29 +535,3 @@ let quizz;
 
 let levelNumber;
 
-
-function serverContactGet() {
-    const urlGetAPI = "https://mock-api.driven.com.br/api/v6/buzzquizz/quizzes";
-    const promisse = axios.get(urlGetAPI);
-    promisse.then(loadQuizz)
-    promisse.then(error)
-}
-let responseQuizz = []
-function loadQuizz(response) {
-    responseQuizz = response.data;
-
-    c(responseQuizz)
-    renderQuizzes()
-}
-
-function renderQuizzes() {
-
-    const ul = document.querySelector(".quizList");
-    ul.innerHTML = "";
-    for (let i = 0; i < responseQuizz.length; i++) {
-        ul.innerHTML += `<li><img src='${responseQuizz[i].image}'alt="Não foi possível carregar a imagem, use uma url de imagem."><p>${responseQuizz[i].title}</p></li>`
-    }
-
-
-
-}

@@ -45,6 +45,7 @@ p {
     max-width: 1100px;
 }
 
+
 header {
     position: absolute;
     top: 0px;
@@ -56,6 +57,13 @@ header {
     justify-content: center;
     align-items: center;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
 }
 
 .userQuizzEmpity {
@@ -128,7 +136,7 @@ header {
 
 .quizzes {
     margin-top: 14px;
-    background-color: red;
+
 }
 
 .quizList img {
@@ -144,11 +152,12 @@ header {
     left: 23px;
     color: #FFFFFF;
     font-weight: 400;
+
 }
 
 
 .userQuizz p,
-.otherquizz p {
+.otherQuizz p {
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 700;
@@ -168,6 +177,55 @@ header {
 
 .userQuizz .quizzes {
     margin-bottom: 15px;
+}
+
+.otherQuizz .quizzes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.otherQuizz .quizzes .quizz {
+    position: relative;
+    width: 340px;
+    height: 180px;
+    margin: 12px;
+
+}
+
+.otherQuizz .quizzes .quizz img {
+    border-radius: 5px;
+    width: 340px;
+    height: 180px;
+    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
+}
+
+.otherQuizz .quizzes .quizz p {
+    position: absolute;
+    z-index: 2;
+    left: 16px;
+    bottom: 10px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 22px;
+    display: flex;
+    align-items: center;
+    color: #FFFFFF;
+    word-break: break-word;
+    text-align: start;
+}
+
+.otherQuizz .quizzes .quizz .degrade {
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    z-index: 1;
+    width: 340px;
+    height: 180px;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.05), rgba(0, 0, 0, 1));
+    border-radius: 5px;
 }
 
 .quizzTheme,
