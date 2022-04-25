@@ -179,12 +179,14 @@ main {
     margin-bottom: 15px;
 }
 
+.userQuizz .quizzes,
 .otherQuizz .quizzes {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
 
+.userQuizz .quizzes .quizz,
 .otherQuizz .quizzes .quizz {
     position: relative;
     width: 340px;
@@ -193,6 +195,7 @@ main {
 
 }
 
+.userQuizz .quizzes .quizz img,
 .otherQuizz .quizzes .quizz img {
     border-radius: 5px;
     width: 340px;
@@ -200,6 +203,7 @@ main {
     background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));
 }
 
+.userQuizz .quizzes .quizz p,
 .otherQuizz .quizzes .quizz p {
     position: absolute;
     z-index: 2;
@@ -217,6 +221,7 @@ main {
     text-align: start;
 }
 
+.userQuizz .quizzes .quizz .degrade,
 .otherQuizz .quizzes .quizz .degrade {
     position: absolute;
     left: 0px;

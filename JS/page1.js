@@ -14,6 +14,8 @@ function gerarQuizzes(response){
     for (let i = 0; i < response.data.length; i++){
         for (let j = 0; j < idList.length; j++){
             if (response.data[i].id === JSON.parse(idList)[j]){
+                document.querySelector(".userQuizzEmpity").classList.add("hide")
+                document.querySelector(".userQuizz").classList.remove("hide")
                 userQuizzes.innerHTML +=`<div class="quizz" onclick="goToAnswerQuizz(this)"><img src="${response.data[i].image}" alt="Não foi possível carregar esta imagem."><p>${response.data[i].title}</p><div class="degrade"></div></div>`
             }
         }
