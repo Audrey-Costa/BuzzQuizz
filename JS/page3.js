@@ -1,5 +1,4 @@
 //let c = console.log.bind(document);
-let idList;
 
 //Carrega a página do tema do quizz.
 function goToQuizzCreator() {
