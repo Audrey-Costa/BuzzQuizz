@@ -1,4 +1,5 @@
 //let c = console.log.bind(document);
+let idList;
 
 //Carrega a página do tema do quizz.
 function goToQuizzCreator() {
@@ -473,10 +474,23 @@ const urlPostAPI = "https://mock-api.driven.com.br/api/v6/buzzquizz/quizzes"
 function sendApiObject() {
 
     const promisse = axios.post(urlPostAPI, quizz);
-    promisse.then(c(promisse));
+    promisse.then(storageId);
     promisse.catch(error);
 }
 
+function storageId(response){
+    id = [response.data.id]
+    idList = localStorage.getItem("idQuizz");
+    c(idList);
+    idList = JSON.parse(idList);
+    c(idList);
+    idList = idList.concat(id);
+    c(idList);
+    localStorage.removeItem("idQuizz");
+    idList = JSON.stringify(idList);
+    c(idList);
+    localStorage.setItem("idQuizz", idList);
+}
 
 function error(erro) {
 

@@ -1,5 +1,6 @@
 let c = console.log.bind(document);
 
+
 const quizzes = document.querySelector(".otherQuizz .quizzes")
 function gerarOtherQuizzes(response){
     c(response.data)
