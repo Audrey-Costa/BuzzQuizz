@@ -8,6 +8,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #fafafa;
 }
 
 h1 {
@@ -36,7 +37,7 @@ p {
 
 .container {
     padding-top: 70px;
-    background-color: #FAFAFA;
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -289,7 +290,7 @@ main {
 .titleQuestion {
     background-color: blue;
     height: 137px;
-    width: 89.5%;
+    width: 679px;
     display: flex;
 
     justify-content: center;
@@ -330,9 +331,12 @@ main {
 
     font-size: 20px;
     margin-bottom: 18px;
+    max-width: 28ch;
+    word-break: break-all;
+
 }
 
-.nonChoiced{
+.nonChoiced {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -342,7 +346,7 @@ main {
     background-color: rgba(255, 255, 255, 0.5);
 }
 
-.choice{
+.choice {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -352,13 +356,14 @@ main {
     background-color: rgba(255, 255, 255, 0)
 }
 
-.red{
+.red {
     color: red;
 }
 
-.green{
+.green {
     color: green;
 }
+
 /*
                     === ACIMA VEM O QUIZZPLAY ===
 */
