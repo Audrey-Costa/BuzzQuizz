@@ -41,6 +41,7 @@ function goToAnswerQuizz(element) {
 //Após o servidor responder, o quizz é montado na página 2. (Obs.: ainda tem q consertar a parte do answers, mas n sei como.)
 function gerarQuizz(response) {
     const questions = response.data.questions
+
     c(response.data)
     document.querySelector(".quizzPlay").innerHTML = `<div class="headerQuizzPlay"><div class="degrade"></div><img src="${response.data.image}"alt="Não foi possível carregar a imagem, use uma url de imagem."><p>${response.data.title}</p></div>`
     //Coloca as perguntas na página.
@@ -54,36 +55,38 @@ function gerarQuizz(response) {
 
         <span class="rowDeColumns">
             <div class="answersColumn">
-            
-                <div class="answer ${response.data.questions[i].answers[i].isCorrectAnswer}" onclick="answerChoose(this)">
-                    <img src="${response.data.questions[i].answers[i].image}" alt="Não foi possível carregar a imagem.">
-                    <div class="nonChoiced hide"></div>
-                    <p>${response.data.questions[i].answers[i].text}</p>
-                </div>
+            <div class="answer ${questions[i].answers[i].isCorrectAnswer}" onclick="answerChoose(this)">
+            <img src="${questions[i].answers[i].image}" alt="Não foi possível carregar a imagem.">
+            <div class="nonChoiced hide"></div>
+            <p>${response.data.questions[i].answers[i].text}</p>
+            </div>
+   
 
-                <div class="answer ${response.data.questions[i].answers[1].isCorrectAnswer}" onclick="answerChoose(this)">
-                    <img src="${response.data.questions[i].answers[1].image}" alt="">
+                <div class="answer ${questions[i].answers[1].isCorrectAnswer}" onclick="answerChoose(this)">
+                    <img src="${questions[i].answers[1].image}" alt="">
                     <div class="nonChoiced hide"></div>
-                    <p class="">${response.data.questions[i].answers[1].text}</p>
+                    <p class="">${questions[i].answers[1].text}</p>
                 </div>
             </div>
             <div class="answersColumn">
-                <div class="answer ${response.data.questions[i].answers[1].isCorrectAnswer}" onclick="answerChoose(this)">
-                    <img src="${response.data.questions[i].answers[1].image}" alt="" >
+                <div class="answer ${questions[i].answers[1].isCorrectAnswer}" onclick="answerChoose(this)">
+                    <img src="${questions[i].answers[1].image}" alt="" >
                     <div class="nonChoiced hide"></div>
-                    <p class="">${response.data.questions[i].answers[1].text}</p>
+                    <p class="">${questions[i].answers[1].text}</p>
                 </div>
-                <div class="answer ${response.data.questions[i].answers[1].isCorrectAnswer}" onclick="answerChoose(this)">
-                    <img src="${response.data.questions[i].answers[1].image}" alt="" >
+                <div class="answer ${questions[i].answers[1].isCorrectAnswer}" onclick="answerChoose(this)">
+                    <img src="${questions[i].answers[1].image}" alt="" >
                     <div class="nonChoiced hide"></div>
-                    <p class="">${response.data.questions[i].answers[1].text}</p>
+                    <p class="">${questions[i].answers[1].text}</p>
                 </div>
             </div>
         </span>
-
-
     </div>`
     }
+
+
+
+
     //Esconde a home e abre a página 2.
     document.querySelector(".home").classList.add("hide")
     document.querySelector(".quizzPlay").classList.remove("hide")

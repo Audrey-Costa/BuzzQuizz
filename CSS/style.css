@@ -307,27 +307,25 @@ main {
 
 }
 
-.rowDeColumns {
+.rowOfAnswers {
     display: flex;
-    flex-direction: row;
-
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 679px;
 
 }
 
-.answersColumn {
-    display: flex;
-    flex-direction: column;
-    margin: 10px;
 
-}
 
 .answer {
     position: relative;
+    margin-top: 20px;
 }
 
 .answer img {
     width: 329.91px;
     height: 175.2px;
+
 }
 
 

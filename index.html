@@ -26,7 +26,7 @@
         </header>
 
         <!-- === HOME ===-->
-        <main class="home">
+        <main class="home hide">
             <div class="userQuizzEmpity">
                 <div>
                     <p>Você não criou nenhum quizz ainda :(</p>
@@ -51,8 +51,41 @@
 
 
         <!-- === PAG 2 -> QUIZZ PLAY  ===-->
-        <main class="quizzPlay hide">
+        <main class="quizzPlay ">
+            <div class="quizzPlayQuestion">
+                <div class="titleQuestion">
+                    <p>${questions[i].title}</p>
+                </div>
 
+                <span class="rowOfAnswers">
+
+                    <div class="answer ${questions[i].answers[i].isCorrectAnswer}" onclick="answerChoose(this)">
+                        <img src="${questions[1].answers[1].image}" alt="Não foi possível carregar a imagem.">
+                        <div class="nonChoiced hide"></div>
+                        <p>${response.data.questions[i].answers[i].text}</p>
+                    </div>
+
+
+                    <div class="answer ${questions[i].answers[1].isCorrectAnswer}" onclick="answerChoose(this)">
+                        <img src="${questions[i].answers[1].image}" alt="">
+                        <div class="nonChoiced hide"></div>
+                        <p class="">${questions[i].answers[1].text}</p>
+                    </div>
+
+
+                    <div class="answer ${questions[i].answers[1].isCorrectAnswer}" onclick="answerChoose(this)">
+                        <img src="${questions[i].answers[1].image}" alt="">
+                        <div class="nonChoiced hide"></div>
+                        <p class="">${questions[i].answers[1].text}</p>
+                    </div>
+                    <div class="answer ${questions[i].answers[1].isCorrectAnswer}" onclick="answerChoose(this)">
+                        <img src="${questions[i].answers[1].image}" alt="">
+                        <div class="nonChoiced hide"></div>
+                        <p class="">${questions[i].answers[1].text}</p>
+                    </div>
+
+                </span>
+            </div>
 
 
 
