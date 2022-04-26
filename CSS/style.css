@@ -280,9 +280,9 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
     margin-top: 20px;
+    padding: 16px;
 
 
 }
@@ -292,7 +292,6 @@ main {
     height: 137px;
     width: 679px;
     display: flex;
-
     justify-content: center;
     align-items: center;
     font-size: 23px;
@@ -301,6 +300,11 @@ main {
 
 .titleQuestion p {
     color: white;
+    max-width: 30ch;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
 }
 
 .rowDeColumns {
@@ -331,8 +335,12 @@ main {
 
     font-size: 20px;
     margin-bottom: 18px;
-    max-width: 28ch;
-    word-break: break-all;
+    max-width: 27.5ch;
+
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 
 }
 
