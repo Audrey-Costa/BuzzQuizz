@@ -21,10 +21,12 @@ function gerarQuizzes(response) {
     }
 }
 
-let promiseQuizzes = axios.get("https://mock-api.driven.com.br/api/v6/buzzquizz/quizzes")
+const promiseQuizzes = axios.get("https://mock-api.driven.com.br/api/v6/buzzquizz/quizzes")
 promiseQuizzes.then(gerarQuizzes)
 
 function goToAnswerQuizz(element) {
+
+
     document.querySelector(".quizzPlay").innerHTML = `<div><img src="${element}"> alt="Não foi possível carragar a imagem."</div>`
     document.querySelector(".home").classList.add("hide")
     document.querySelector(".quizzPlay").classList.remove("hide")
