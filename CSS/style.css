@@ -233,6 +233,139 @@ main {
     border-radius: 5px;
 }
 
+/*
+                    === ABAIXO VEM O QUIZZPLAY ===
+*/
+
+
+.headerQuizzPlay {
+    height: 227px;
+    position: relative;
+}
+
+.headerQuizzPlay img {
+    min-width: 1400px;
+    height: 100%;
+    object-fit: cover;
+
+}
+
+.headerQuizzPlay .degrade {
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.57), rgba(0, 0, 0, 0.57));
+    border-radius: 5px;
+}
+
+.headerQuizzPlay p {
+    position: relative;
+    bottom: 50%;
+    justify-content: center;
+    color: #FFFFFF;
+    z-index: 2;
+
+
+}
+
+.quizzPlayQuestion {
+
+    width: 759px;
+    height: 676px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+    margin-top: 20px;
+
+
+}
+
+.titleQuestion {
+    background-color: blue;
+    height: 137px;
+    width: 89.5%;
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+    font-size: 23px;
+
+}
+
+.titleQuestion p {
+    color: white;
+}
+
+.rowDeColumns {
+    display: flex;
+    flex-direction: row;
+
+
+}
+
+.answersColumn {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+
+}
+
+.answer {
+    position: relative;
+}
+
+.answer img {
+    width: 329.91px;
+    height: 175.2px;
+}
+
+
+.answer p {
+
+    font-size: 20px;
+    margin-bottom: 18px;
+}
+
+.nonChoiced{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.choice{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    background-color: rgba(255, 255, 255, 0)
+}
+
+.red{
+    color: red;
+}
+
+.green{
+    color: green;
+}
+/*
+                    === ACIMA VEM O QUIZZPLAY ===
+*/
+
+
+
+
 .quizzTheme,
 .quizzQuestions,
 .quizzLevels,
