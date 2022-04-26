@@ -1,6 +1,6 @@
 function answerChoose(element) {
     //Cria uma array com os elementos das 4 opções de resposta.
-    let row = element.parentNode.parentNode.querySelectorAll(".nonChoiced")
+    let row = element.parentNode.querySelectorAll(".nonChoiced")
 
     //Variável da div de clareamento.
     let div = element.querySelector(".nonChoiced")
@@ -23,8 +23,3 @@ function answerChoose(element) {
 }
 
 
-function getQuizzChoose() {
-
-
-
-}

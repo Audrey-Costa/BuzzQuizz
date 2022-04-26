@@ -42,13 +42,14 @@ function goToAnswerQuizz(element) {
 function gerarQuizz(response) {
     const questions = response.data.questions;
 
+
     c(response.data)
     document.querySelector(".quizzPlay").innerHTML = `<div class="headerQuizzPlay"><div class="degrade"></div><img src="${response.data.image}"alt="Não foi possível carregar a imagem, use uma url de imagem."><p>${response.data.title}</p></div>`
     //Coloca as perguntas na página.
     for (let i = 0; i < questions.length; i++) {
         document.querySelector(".quizzPlay").innerHTML += `
         <div class="quizzPlayQuestion">
-                <div class="titleQuestion">
+                <div class="titleQuestion" >
                     <p>${questions[i].title}</p>
                 </div>
                 <span class="rowOfAnswers">
@@ -71,11 +72,10 @@ function gerarQuizz(response) {
 
     }
 
-
-
-
-
     //Esconde a home e abre a página 2.
     document.querySelector(".home").classList.add("hide")
     document.querySelector(".quizzPlay").classList.remove("hide")
+}
+function shuffle() {
+    return Math.random() - 0.5;
 }

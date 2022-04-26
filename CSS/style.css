@@ -276,6 +276,7 @@ main {
 
     width: 759px;
     height: 676px;
+    border-radius: 3px;
     display: flex;
     flex-direction: column;
     justify-content: start;
@@ -285,16 +286,19 @@ main {
     padding: 40px;
 
 
+
 }
 
 .titleQuestion {
     background-color: blue;
     height: 137px;
     width: 679px;
+    border-radius: 3px;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 23px;
+
 
 }
 
@@ -326,6 +330,7 @@ main {
 .answer img {
     width: 329.91px;
     height: 175.2px;
+    border-radius: 3px;
 
 }
 
@@ -529,5 +534,37 @@ main {
         align-items: center
     }
 
+    .headerQuizzPlay {
+        height: 227px;
+        position: relative;
+    }
+
+    .headerQuizzPlay img {
+        min-width: 720px;
+        height: 100%;
+        object-fit: cover;
+
+    }
+
+    .headerQuizzPlay .degrade {
+        position: absolute;
+        left: 0px;
+        bottom: 0px;
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.57), rgba(0, 0, 0, 0.57));
+        border-radius: 5px;
+    }
+
+    .headerQuizzPlay p {
+        position: relative;
+        bottom: 50%;
+        justify-content: center;
+        color: #FFFFFF;
+        z-index: 2;
+
+
+    }
 
 }
