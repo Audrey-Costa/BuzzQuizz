@@ -278,11 +278,11 @@ main {
     height: 676px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
-    margin-top: 20px;
-    padding: 16px;
+    margin-top: 40px;
+    padding: 40px;
 
 
 }
@@ -299,11 +299,12 @@ main {
 }
 
 .titleQuestion p {
+    margin: 10px;
     color: white;
-    max-width: 30ch;
+    word-break: break-all;
     overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+
+
 
 }
 

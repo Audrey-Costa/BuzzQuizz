@@ -40,49 +40,37 @@ function goToAnswerQuizz(element) {
 
 //Após o servidor responder, o quizz é montado na página 2. (Obs.: ainda tem q consertar a parte do answers, mas n sei como.)
 function gerarQuizz(response) {
-    const questions = response.data.questions
+    const questions = response.data.questions;
 
     c(response.data)
     document.querySelector(".quizzPlay").innerHTML = `<div class="headerQuizzPlay"><div class="degrade"></div><img src="${response.data.image}"alt="Não foi possível carregar a imagem, use uma url de imagem."><p>${response.data.title}</p></div>`
     //Coloca as perguntas na página.
     for (let i = 0; i < questions.length; i++) {
         document.querySelector(".quizzPlay").innerHTML += `
-        
         <div class="quizzPlayQuestion">
-        <div class="titleQuestion">
-            <p>${questions[i].title}</p>
-        </div>
+                <div class="titleQuestion">
+                    <p>${questions[i].title}</p>
+                </div>
+                <span class="rowOfAnswers">
+             </span>
+        </div>`
+        c(questions[i].answers)
+        //coloca as respostas nas perguntas
+        for (let a = 0; a < questions[i].answers.length; a++) {
 
-        <span class="rowDeColumns">
-            <div class="answersColumn">
-            <div class="answer ${questions[i].answers[i].isCorrectAnswer}" onclick="answerChoose(this)">
-            <img src="${questions[i].answers[i].image}" alt="Não foi possível carregar a imagem.">
-            <div class="nonChoiced hide"></div>
-            <p>${response.data.questions[i].answers[i].text}</p>
-            </div>
-   
-
-                <div class="answer ${questions[i].answers[1].isCorrectAnswer}" onclick="answerChoose(this)">
-                    <img src="${questions[i].answers[1].image}" alt="">
-                    <div class="nonChoiced hide"></div>
-                    <p class="">${questions[i].answers[1].text}</p>
-                </div>
-            </div>
-            <div class="answersColumn">
-                <div class="answer ${questions[i].answers[1].isCorrectAnswer}" onclick="answerChoose(this)">
-                    <img src="${questions[i].answers[1].image}" alt="" >
-                    <div class="nonChoiced hide"></div>
-                    <p class="">${questions[i].answers[1].text}</p>
-                </div>
-                <div class="answer ${questions[i].answers[1].isCorrectAnswer}" onclick="answerChoose(this)">
-                    <img src="${questions[i].answers[1].image}" alt="" >
-                    <div class="nonChoiced hide"></div>
-                    <p class="">${questions[i].answers[1].text}</p>
-                </div>
-            </div>
-        </span>
+            let arrRowOfAnswers = document.querySelectorAll(".rowOfAnswers"); //cria uma array de rowOfAnswers
+            //entra na primeira pergunta e coloca a quantidade de answers
+            c(arrRowOfAnswers)
+            c("valor de a: " + a)
+            arrRowOfAnswers[i].innerHTML += `<div class="answer ${questions[i].answers[a].isCorrectAnswer}" onclick="answerChoose(this)">
+        <img src="${questions[i].answers[a].image}" alt="Não foi possível carregar a imagem.">
+        <div class="nonChoiced hide"></div>
+        <p>${questions[i].answers[a].text}</p>
     </div>`
+        }
+
     }
+
 
 
 
